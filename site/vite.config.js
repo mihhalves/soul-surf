@@ -29,6 +29,7 @@ function collectHtmlInputs(dir, baseDir = dir, inputs = {}) {
 const htmlInputs = collectHtmlInputs(__dirname)
 
 export default defineConfig({
+  base: './',
   plugins: [react()],
   build: {
     rollupOptions: {

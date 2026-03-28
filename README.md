@@ -45,6 +45,23 @@ cd site
 npm run preview
 ```
 
+## Como publicar no GitHub Pages
+
+O repositório já está preparado para publicar automaticamente via GitHub Actions.
+
+1. Envie suas mudanças para a branch `main`.
+2. No GitHub, abra `Settings > Pages`.
+3. Em `Source`, selecione `GitHub Actions`.
+4. Aguarde a execução do workflow de deploy.
+
+Sempre que houver push na `main`, o site será reconstruído e publicado.
+
+URL esperada de publicação:
+
+```text
+https://mihhalves.github.io/soul-surf/
+```
+
 ## Estrutura principal
 
 - `site/index.html`: página inicial
