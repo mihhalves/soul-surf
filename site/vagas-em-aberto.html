@@ -13,8 +13,8 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; overflow-x: hidden; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
@@ -31,7 +31,7 @@
       --text-light: #666666;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
     h1, h2, h3 { font-family: 'Glegoo', serif; }
 
     .btn {
@@ -40,6 +40,7 @@
       font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
       cursor: pointer; border: none; transition: all 0.3s ease;
       white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-primary { background: var(--blue); color: #fff; }
     .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,115,168,.35); }
@@ -51,6 +52,7 @@
     #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(10,22,40,.97);
+      -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
       box-shadow: 0 2px 24px rgba(0,0,0,.35);
     }
@@ -194,9 +196,15 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero { padding-top: 120px; }
+      #navbar { padding-top: env(safe-area-inset-top); }
+      .nav-inner { height: auto; min-height: 72px; padding: 12px 0 10px; flex-wrap: wrap; gap: 12px; }
+      .nav-links { display: flex; order: 3; width: 100%; overflow-x: auto; gap: 16px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { white-space: nowrap; font-size: 13px; padding-bottom: 8px; }
+      .hero { padding-top: 132px; }
       .vacancies-grid { grid-template-columns: 1fr; }
+      .vacancy-card .btn,
+      .section-wrap > .container > div:last-child .btn { width: 100%; justify-content: center; white-space: normal; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     }
