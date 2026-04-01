@@ -470,6 +470,77 @@
     }
     .footer-social a:hover { background: var(--blue); color: #fff; }
 
+    /* ========== FLOATING CTA ========== */
+    .cta-floating {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--blue);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 50px;
+      box-shadow: 0 10px 40px rgba(0, 115, 168, 0.4);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .cta-floating.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .cta-floating:hover {
+      background: var(--blue-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 50px rgba(0, 115, 168, 0.5);
+    }
+
+    .cta-floating-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-floating-icon {
+      font-size: 20px;
+      margin-right: 4px;
+    }
+
+    .cta-floating-close {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 0;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .cta-floating-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     /* ========== RESPONSIVE ========== */
     @media (max-width: 1024px) {
       .stats-grid { grid-template-columns: repeat(2,1fr); }
@@ -540,10 +611,26 @@
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
       .stat-item:last-child { border-bottom: none; }
+      .cta-floating {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+        font-size: 14px;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
+
+<!-- ===== CTA FLUTUANTE ===== -->
+<a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="cta-floating" id="ctaFloating" aria-label="Ajude a transformar vidas — Doe agora">
+  <span class="cta-floating-text">
+    <span class="cta-floating-icon">❤</span>
+    <span>Ajude a Transformar Vidas</span>
+  </span>
+  <button class="cta-floating-close" id="ctaFloatingClose" onclick="event.preventDefault(); event.stopPropagation(); closeCtaFloating();" aria-label="Fechar botão de doação">✕</button>
+</a>
 
 <!-- ===== NAVBAR ===== -->
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
@@ -1147,6 +1234,32 @@
     gsap.to(hamburger.querySelectorAll('span')[1], { opacity: 1, duration: .2 });
     gsap.to(hamburger.querySelectorAll('span')[2], { rotation: 0, y: 0, duration: .28 });
   }
+
+  // --- Floating CTA visibility control ---
+  function showCtaFloating() {
+    const cta = document.getElementById('ctaFloating');
+    if (cta && !cta.classList.contains('show')) {
+      cta.classList.add('show');
+    }
+  }
+
+  function closeCtaFloating() {
+    const cta = document.getElementById('ctaFloating');
+    if (cta) {
+      cta.classList.remove('show');
+    }
+  }
+
+  // Show floating CTA after hero section scroll
+  ScrollTrigger.create({
+    trigger: '#stats',
+    start: 'top center',
+    onEnter: () => {
+      showCtaFloating();
+    },
+    once: false
+  });
+
 </script>
 
 </body>
