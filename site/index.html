@@ -1223,6 +1223,16 @@
 
     // --- Navbar fade in ---
     gsap.from('#navbar', { opacity: 0, y: -20, duration: .8, ease: 'power2.out' });
+
+    // Show floating CTA after hero section scroll
+    ScrollTrigger.create({
+      trigger: '#stats',
+      start: 'top center',
+      onEnter: () => {
+        showCtaFloating();
+      },
+      once: false
+    });
   });
 
   function closeMobileMenu() {
@@ -1249,16 +1259,6 @@
       cta.classList.remove('show');
     }
   }
-
-  // Show floating CTA after hero section scroll
-  ScrollTrigger.create({
-    trigger: '#stats',
-    start: 'top center',
-    onEnter: () => {
-      showCtaFloating();
-    },
-    once: false
-  });
 
 </script>
 
