@@ -86,11 +86,17 @@
     .nav-links a:hover::after { width: 100%; }
 
     .page-hero {
-      padding: 140px 0 72px;
+      padding: 132px 0 78px;
       background:
-        linear-gradient(135deg, rgba(5,18,35,.93) 0%, rgba(0,50,90,.72) 52%, rgba(5,18,35,.58) 100%),
+        linear-gradient(120deg, rgba(5,18,35,.95) 0%, rgba(0,50,90,.82) 48%, rgba(5,18,35,.75) 100%),
         url('./fotos/pessoal.jpeg') center/cover no-repeat;
       color: #fff;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 26px;
+      align-items: end;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -111,7 +117,53 @@
       line-height: 1.6;
     }
 
-    .section-wrap { padding: 84px 0; background: var(--bg-light); }
+    .hero-panel {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 22px;
+      padding: 24px;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 42px rgba(0,0,0,.22);
+    }
+    .hero-panel h3 {
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .hero-panel p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      color: rgba(255,255,255,.84);
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .hero-metrics li {
+      background: rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+    .hero-metrics strong {
+      display: block;
+      font-family: 'Glegoo', serif;
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-metrics span {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+    }
+
+    .section-wrap { padding: 90px 0; background: var(--bg-light); }
     .section-wrap.alt { background: #fff; }
 
     .section-header { margin-bottom: 40px; }
@@ -125,15 +177,25 @@
     .section-header p { font-size: 17px; color: var(--text-light); line-height: 1.75; max-width: 780px; }
 
     .donation-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
     }
     .donation-card {
       background: #fff; border: 1px solid var(--border); border-radius: 22px;
       padding: 30px;
       box-shadow: 0 2px 18px rgba(0,0,0,.05);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
+    .donation-card:nth-child(1),
+    .donation-card:nth-child(2),
+    .donation-card:nth-child(3),
+    .donation-card:nth-child(4) { grid-column: span 6; }
     .donation-card h3 { font-size: 30px; color: var(--bg-dark); margin-bottom: 10px; }
     .donation-card p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+    .donation-card .btn { margin-top: auto; }
 
     .donation-card.full { grid-column: 1 / -1; }
 
@@ -160,7 +222,7 @@
       overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: 0 24px 64px rgba(0,0,0,.15);
-      margin-top: 28px;
+      margin-top: 34px;
       position: relative;
     }
     .impact-photo img { width: 100%; height: 420px; object-fit: cover; }
@@ -200,6 +262,38 @@
     }
     .pj-photo img { width: 100%; height: 300px; object-fit: cover; }
 
+    .impact-strip {
+      margin-top: 22px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .impact-item {
+      border-right: 1px solid var(--border);
+      padding-right: 12px;
+    }
+    .impact-item:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+    .impact-item strong {
+      display: block;
+      font-size: 28px;
+      color: var(--blue);
+      font-family: 'Glegoo', serif;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .impact-item span {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
     #footer { background: var(--bg-navy); border-top: 1px solid rgba(255,255,255,.06); padding: 64px 0 32px; }
     .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); }
     .footer-brand p { margin-top: 18px; font-size: 14px; color: rgba(255,255,255,.4); line-height: 1.72; max-width: 290px; }
@@ -218,9 +312,18 @@
     .footer-social a:hover { background: var(--blue); color: #fff; }
 
     @media (max-width: 1024px) {
-      .donation-grid, .pj-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .donation-grid { grid-template-columns: 1fr; }
+      .donation-card:nth-child(1),
+      .donation-card:nth-child(2),
+      .donation-card:nth-child(3),
+      .donation-card:nth-child(4) { grid-column: auto; }
+      .pj-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .impact-photo img { height: 320px; }
+      .impact-strip { grid-template-columns: 1fr; }
+      .impact-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+      .impact-item:last-child { border-bottom: none; padding-bottom: 0; }
     }
     @media (max-width: 768px) {
       #navbar { padding-top: env(safe-area-inset-top); }
@@ -272,12 +375,24 @@
 
 <main>
   <section class="page-hero" aria-labelledby="apoie-heading">
-    <div class="container">
-      <span class="hero-badge">Apoie o Soul Surf</span>
-      <h1 id="apoie-heading">Sua ajuda vira onda de transformação</h1>
-      <p>
-        Escolha como apoiar e fortaleça um projeto que une esporte, educação e oportunidades reais para crianças e jovens em Itanhaém.
-      </p>
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-badge">Apoie o Soul Surf</span>
+        <h1 id="apoie-heading">Reme com a gente nessa onda de transformação</h1>
+        <p>
+          Escolha sua forma de apoiar e coloque mais crianças e adolescentes dentro d'agua, na escola e perto de um futuro com oportunidade.
+        </p>
+      </div>
+      <aside class="hero-panel" aria-label="Resumo de impacto social">
+        <h3>Quando voce doa, a maré muda</h3>
+        <p>Seu apoio fortalece aulas de surf, acompanhamento socioeducativo e ações ambientais para a juventude de Itanhaem.</p>
+        <ul class="hero-metrics">
+          <li><strong>200+</strong><span>jovens</span></li>
+          <li><strong>2021</strong><span>desde</span></li>
+          <li><strong>3</strong><span>frentes</span></li>
+        </ul>
+        <a class="btn btn-primary" href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Quero apoiar agora</a>
+      </aside>
     </div>
   </section>
 
@@ -285,57 +400,72 @@
     <div class="container">
       <div class="section-header">
         <span class="label">Pessoa Física</span>
-        <h2>Apoie como pessoa física</h2>
-        <p>Escolha a forma de apoiar que fizer mais sentido para você.</p>
+        <h2>Escolha sua forma de contribuir</h2>
+        <p>Uma página direta, com as principais formas de apoio em destaque para facilitar a decisão de quem quer ajudar.</p>
       </div>
 
       <div class="donation-grid">
         <article class="donation-card">
-          <h3>Doação única</h3>
+          <h3>Doacao unica</h3>
           <p>
-            Com qualquer valor, você ajuda a transformar vidas através do mar. Sua doação permite que crianças e jovens encontrem no surf um caminho de esperança, disciplina e novas oportunidades.
+            Qualquer valor ja gera impacto. Sua contribuicao ajuda a manter aulas, equipamentos, alimentacao e estrutura para cada encontro.
           </p>
-          <a class="btn btn-primary" href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Doação única</a>
+          <a class="btn btn-primary" href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Fazer doacao unica</a>
         </article>
 
         <article class="donation-card">
-          <h3>Doação recorrente</h3>
+          <h3>Doacao recorrente</h3>
           <p>
-            Com uma doação mensal, você mantém o Soul Surf em movimento e transforma histórias todos os dias.
+            A doacao mensal da previsibilidade para o projeto continuar atendendo as turmas durante todo o ano.
           </p>
-          <a class="btn btn-green" href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Quero doar mensalmente</a>
+          <a class="btn btn-green" href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Apoiar todo mes</a>
         </article>
 
         <article class="donation-card">
-          <h3>Depósito bancário ou PIX</h3>
-          <p>Se preferir, faça uma transferência bancária:</p>
+          <h3>PIX e deposito</h3>
+          <p>Prefere transferencia direta? Use os dados abaixo:</p>
           <div class="bank-box">
             <p><strong>CHAVE PIX:</strong> (CNPJ) depois eu coloco</p>
-            <p><strong>Dados Bancários:</strong></p>
-            <div class="bank-space">Espaço para banco, agência, conta, favorecido e CNPJ.</div>
+            <p><strong>Dados Bancarios:</strong></p>
+            <div class="bank-space">Espaco para banco, agencia, conta, favorecido e CNPJ.</div>
           </div>
         </article>
 
         <article class="donation-card">
-          <h3>Doação via imposto de renda</h3>
+          <h3>Imposto de renda</h3>
           <p>
-            Direcione parte do seu Imposto de Renda devido para o Projeto Ondas!
+            Direcione parte do seu imposto devido para fortalecer o atendimento de criancas e adolescentes no Soul Surf.
           </p>
-          <a class="btn btn-primary" href="./destinacao-criancas-irpf-soul-surf.html">Destinação via IRPF</a>
+          <a class="btn btn-primary" href="./destinacao-criancas-irpf-soul-surf.html">Destinar via IRPF</a>
         </article>
 
         <article class="donation-card full">
           <h3>Voluntariado</h3>
           <p>
-            Doe seu tempo, talento e energia para fortalecer nossa atuação com crianças e adolescentes.
+            Doe seu tempo e seu talento em frentes administrativas, pedagogicas, operacionais e de comunicacao.
           </p>
-          <a class="btn btn-green" href="./vagas-em-aberto.html">Conheça nossas vagas em aberto</a>
+          <a class="btn btn-green" href="./vagas-em-aberto.html">Ver vagas abertas</a>
         </article>
       </div>
 
       <div class="impact-photo" aria-label="Foto de impacto social Soul Surf">
         <img src="./fotos/IMG_4656.JPG" alt="Jovens do Soul Surf na praia" loading="lazy" />
-        <span class="caption">Apoiar hoje muda o amanhã</span>
+        <span class="caption">Apoiar hoje muda o amanha</span>
+      </div>
+
+      <div class="impact-strip" aria-label="Resumo de resultados">
+        <div class="impact-item">
+          <strong>+200</strong>
+          <span>Criancas e adolescentes impactados com esporte e educacao.</span>
+        </div>
+        <div class="impact-item">
+          <strong>4 anos</strong>
+          <span>Atuacao continua em Itanhaem conectando oceano e cidadania.</span>
+        </div>
+        <div class="impact-item">
+          <strong>100%</strong>
+          <span>Compromisso com impacto social real e transformacao local.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -344,26 +474,26 @@
     <div class="container">
       <div class="pj-box">
         <div class="section-header">
-          <span class="label" style="color:#8ac3ea;">Pessoa Jurídica</span>
-          <h2>Apoie como pessoa jurídica</h2>
-          <p>Empresas parceiras ampliam nosso alcance e aceleram transformação social real.</p>
+          <span class="label" style="color:#8ac3ea;">Pessoa Juridica</span>
+          <h2>Empresas que remam junto multiplicam impacto</h2>
+          <p>Crie um projeto de parceria alinhado aos objetivos ESG da sua empresa e transforme vidas com a nossa equipe.</p>
         </div>
 
         <div class="pj-grid">
           <article class="pj-card">
             <h3>Leis de incentivo</h3>
             <p>
-              Somos aptos a captar recursos pela Lei Federal de Incentivo ao Esporte e pelo Fundo Municipal da Criança e do Adolescente. Você doa parte do que pagaria de Imposto de Renda para financiar projetos sociais.
+              Sua empresa pode direcionar parte do imposto para projetos esportivos e sociais, com alto retorno de impacto e visibilidade positiva.
             </p>
-            <a class="btn btn-outline" href="mailto:contato@projetosoulsurf.org?subject=Conheca%20nossos%20projetos%20-%20Soul%20Surf">Conheça nossos projetos!</a>
+            <a class="btn btn-outline" href="mailto:contato@projetosoulsurf.org?subject=Conheca%20nossos%20projetos%20-%20Soul%20Surf">Receber proposta de incentivo</a>
           </article>
 
           <article class="pj-card">
-            <h3>Parcerias</h3>
+            <h3>Parcerias e ativacoes</h3>
             <p>
-              Desenvolvemos projetos customizados, como colabs, mutirões de limpeza de praia, campeonato de surf solidário e projetos de voluntariado.
+              Cocriamos campanhas, experiencias de marca, voluntariado corporativo e acoes ambientais com entregas personalizadas.
             </p>
-            <a class="btn btn-outline" href="mailto:contato@projetosoulsurf.org?subject=Vamos%20dropar%20essa%20onda%20juntos">Vamos dropar essa onda juntos?</a>
+            <a class="btn btn-outline" href="mailto:contato@projetosoulsurf.org?subject=Vamos%20dropar%20essa%20onda%20juntos">Falar com o time Soul Surf</a>
           </article>
         </div>
 
@@ -381,7 +511,7 @@
       <div class="footer-brand">
         <a href="./index.html#hero" style="display:inline-flex;align-items:center;gap:12px;color:#fff;" aria-label="Soul Surf — voltar ao início">
           <div class="nav-logo-icon" aria-hidden="true">
-            <img src="./fotos/IMG_4654.JPG" alt="Jovens do Projeto Soul Surf em ação na praia" />
+            <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Logo do Projeto Soul Surf" />
           </div>
           <div class="nav-logo-text">
             <strong>Soul Surf</strong>
