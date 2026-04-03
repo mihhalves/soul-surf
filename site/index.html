@@ -15,128 +15,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
 
+  <link rel="stylesheet" href="css/shared.css" />
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
   <style>
-    /* ========== RESET ========== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
-    body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-
-    /* ========== CSS VARIABLES ========== */
-    :root {
-      --blue: #0073A8;
-      --blue-dark: #005a84;
-      --blue-light: #1a8fc0;
-      --green: #4D917B;
-      --green-dark: #3b7260;
-      --gold: #F5A623;
-      --white: #fff;
-      --text: #333333;
-      --text-light: #666666;
-      --bg-light: #F7F9FB;
-      --bg-dark: #0a1628;
-      --bg-navy: #051223;
-      --border: #E6E6E6;
-    }
-
-    /* ========== UTILITIES ========== */
-    .container { max-width: 1200px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
-    h1, h2, h3 { font-family: 'Glegoo', serif; }
-    .section-label {
-      display: inline-block;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 14px;
-    }
-
-    /* ========== BUTTONS ========== */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 30px; border-radius: 50px;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px;
-      cursor: pointer; border: none; transition: all 0.3s ease;
-      text-decoration: none; white-space: nowrap;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .btn-primary { background: var(--blue); color: #fff; }
-    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,115,168,.4); }
-    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.55); }
-    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: #fff; }
-    .btn-white { background: #fff; color: var(--blue); }
-    .btn-white:hover { background: #e8f4ff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
-
-    /* ========== ANIMATION INIT ========== */
-    .reveal       { opacity: 0; transform: translateY(44px); }
-    .reveal-left  { opacity: 0; transform: translateX(-44px); }
-    .reveal-right { opacity: 0; transform: translateX(44px); }
-    .reveal-scale { opacity: 0; transform: scale(.88); }
-
-    /* ========== NAVBAR ========== */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      transition: background .4s, box-shadow .4s;
-    }
-    #navbar.scrolled {
-      background: rgba(10,22,40,.97);
-      -webkit-backdrop-filter: blur(14px);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 2px 24px rgba(0,0,0,.35);
-    }
-    .nav-inner {
-      display: flex; align-items: center;
-      justify-content: space-between; height: 72px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; color: #fff; }
-    .nav-logo-icon {
-      width: 44px; height: 44px; border-radius: 13px;
-      background: rgba(0,115,168,.22); border: 1px solid rgba(0,115,168,.45);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
-    .nav-logo-text strong { display: block; font-size: 18px; font-weight: 800; letter-spacing: .04em; line-height: 1.2; }
-    .nav-logo-text span { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .12em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a {
-      color: rgba(255,255,255,.75); font-size: 14px; font-weight: 500;
-      transition: color .2s; position: relative; padding-bottom: 4px;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--blue); transition: width .3s;
-    }
-    .nav-links a:hover { color: #fff; }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta { margin-left: 16px; }
-
-    /* hamburger */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 8px;
-    }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s; }
-
-    /* mobile menu */
-    .mobile-menu {
-      display: none; position: fixed; top: 72px; left: 0; right: 0;
-      background: rgba(10,22,40,.98); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-      padding: 20px 24px 28px; z-index: 999;
-      transform: translateY(-110%); opacity: 0; transition: all .35s ease;
-    }
-    .mobile-menu.open { transform: translateY(0); opacity: 1; }
-    .mobile-menu a {
-      display: block; color: rgba(255,255,255,.8); font-size: 16px; font-weight: 500;
-      padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.08); transition: color .2s;
-    }
-    .mobile-menu a:last-child { border: none; color: var(--blue); font-weight: 700; margin-top: 8px; }
-    .mobile-menu a:hover { color: #fff; }
-
     /* ========== HERO ========== */
     #hero {
       position: relative; min-height: 100svh; min-height: 100dvh;
@@ -296,7 +180,7 @@
     .mvv-card h3 { font-size: 26px; color: var(--bg-dark); margin-bottom: 16px; }
     .mvv-card p { font-size: 15px; color: var(--text-light); line-height: 1.8; }
 
-    /* ========== CAMPAIGN ========== */
+    /* ========== CAMPANHA ========== */
     #water {
       padding: 88px 0;
       background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%);
@@ -317,7 +201,12 @@
     .water-text h2 { font-size: clamp(28px, 3.5vw, 46px); color: #fff; line-height: 1.2; margin-bottom: 18px; }
     .water-text p { font-size: 16px; color: rgba(255,255,255,.82); line-height: 1.82; margin-bottom: 36px; }
     .water-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-    .water-img img { width: 100%; height: 360px; object-fit: cover; border-radius: 24px; box-shadow: 0 24px 64px rgba(0,0,0,.32); }
+    .water-img img { width: 100%; height: 360px; object-fit: cover; border-radius: 24px; }
+
+    /* ESTILO DO CARROSSEL */
+    .carousel-container { overflow: hidden; position: relative; }
+    .carousel-slides { display: flex; width: 400%; transition: transform 0.8s ease-in-out; }
+    .slide { width: 25%; flex-shrink: 0; }
 
     /* ========== VIDEO ========== */
     #video-section { padding: 88px 0; background: var(--bg-light); }
@@ -329,7 +218,7 @@
     .video-aspect { position: relative; padding-bottom: 56.25%; height: 0; }
     .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* ========== GALLERY ========== */
+    /* ========== GALERIA ========== */
     #gallery { padding: 100px 0; background: var(--white); }
     .gallery-grid {
       display: grid;
@@ -452,96 +341,7 @@
     .cta-content p { font-size: 18px; color: rgba(255,255,255,.55); max-width: 540px; margin: 0 auto 52px; line-height: 1.72; }
     .cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 
-    /* ========== FOOTER ========== */
-    #footer { background: var(--bg-navy); border-top: 1px solid rgba(255,255,255,.06); padding: 64px 0 32px; }
-    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .footer-brand p { margin-top: 18px; font-size: 14px; color: rgba(255,255,255,.4); line-height: 1.72; max-width: 290px; }
-    .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 20px; }
-    .footer-col li { margin-bottom: 10px; }
-    .footer-col li a { color: rgba(255,255,255,.42); font-size: 14px; transition: color .2s; }
-    .footer-col li a:hover { color: #fff; }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
-    .footer-bottom p { color: rgba(255,255,255,.28); font-size: 13px; }
-    .footer-social { display: flex; gap: 10px; }
-    .footer-social a {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.45); transition: all .25s;
-    }
-    .footer-social a:hover { background: var(--blue); color: #fff; }
-
-    /* ========== FLOATING CTA ========== */
-    .cta-floating {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      z-index: 900;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--blue);
-      color: #fff;
-      padding: 16px 24px;
-      border-radius: 50px;
-      box-shadow: 0 10px 40px rgba(0, 115, 168, 0.4);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      border: none;
-      transition: all 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      white-space: nowrap;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .cta-floating.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .cta-floating:hover {
-      background: var(--blue-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 50px rgba(0, 115, 168, 0.5);
-    }
-
-    .cta-floating-text {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .cta-floating-icon {
-      font-size: 20px;
-      margin-right: 4px;
-    }
-
-    .cta-floating-close {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: #fff;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      padding: 0;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    .cta-floating-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* ========== RESPONSIVE ========== */
+    /* ========== RESPONSIVIDADE ========== */
     @media (max-width: 1024px) {
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .stat-item:nth-child(2) { border-right: none; }
@@ -553,31 +353,8 @@
       .gallery-item.wide { grid-column: span 12; min-height: 260px; }
       .gallery-item.tall,
       .gallery-item.square { grid-column: span 6; min-height: 300px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
-      #navbar { padding-top: env(safe-area-inset-top); }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .mobile-menu { display: block; top: calc(72px + env(safe-area-inset-top)); padding-bottom: calc(28px + env(safe-area-inset-bottom)); }
-      .nav-inner { height: 64px; gap: 10px; }
-      .nav-logo {
-        flex: 1;
-        min-width: 0;
-        max-width: calc(100% - 54px);
-        gap: 10px;
-      }
-      .nav-logo-icon { width: 40px; height: 40px; border-radius: 11px; }
-      .nav-logo-text { min-width: 0; }
-      .nav-logo-text strong {
-        font-size: 17px;
-        line-height: 1.1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .nav-logo-text span { display: none; }
-      .hamburger { flex-shrink: 0; margin-left: 4px; }
       #hero { align-items: flex-start; }
       .hero-content { padding-top: calc(108px + env(safe-area-inset-top)); }
       .projects-grid { grid-template-columns: 1fr; }
@@ -587,8 +364,6 @@
       .gallery-item.wide,
       .gallery-item.tall,
       .gallery-item.square { grid-column: span 1; min-height: 230px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn,
       .water-btns .btn,
@@ -604,20 +379,11 @@
       .cta-btns { flex-direction: column; align-items: center; }
     }
     @media (max-width: 480px) {
-      .container { padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
-      .nav-logo-text strong { font-size: 15px; }
       .hero-content { padding-top: calc(100px + env(safe-area-inset-top)); }
       .hero-badge { display: none; }
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
       .stat-item:last-child { border-bottom: none; }
-      .cta-floating {
-        bottom: 20px;
-        right: 20px;
-        padding: 14px 20px;
-        font-size: 14px;
-        gap: 8px;
-      }
     }
   </style>
 </head>
@@ -632,60 +398,9 @@
   <button class="cta-floating-close" id="ctaFloatingClose" onclick="event.preventDefault(); event.stopPropagation(); closeCtaFloating();" aria-label="Fechar botão de doação">✕</button>
 </a>
 
-<!-- ===== NAVBAR ===== -->
-<nav id="navbar" role="navigation" aria-label="Navegação principal">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Projeto Soul Surf — início">
-        <div class="nav-logo-icon" aria-hidden="true">
-          <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
-        </div>
-        <div class="nav-logo-text">
-          <strong>Soul Surf</strong>
-          <span>Projeto Social</span>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#about">O Projeto</a></li>
-        <li><a href="#projects">Iniciativas</a></li>
-        <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
-        <li><a href="./transparencia.html">Transparência</a></li>
-        <li><a href="#gallery">Galeria</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#mvv">Missão</a></li>
-        <li><a href="#water">Campanha</a></li>
-        <li><a href="#footer">Contato</a></li>
-      </ul>
-
-      <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="nav-cta btn btn-primary">
-        Doe Agora
-      </a>
-
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- ===== MOBILE MENU ===== -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
-  <a href="#about"    onclick="closeMobileMenu()">O Projeto</a>
-  <a href="#projects" onclick="closeMobileMenu()">Iniciativas</a>
-  <a href="./apoie-o-soul-surf.html" onclick="closeMobileMenu()">Apoie</a>
-  <a href="./transparencia.html" onclick="closeMobileMenu()">Transparência</a>
-  <a href="#gallery"  onclick="closeMobileMenu()">Galeria</a>
-  <a href="#blog"     onclick="closeMobileMenu()">Blog</a>
-  <a href="#mvv"      onclick="closeMobileMenu()">Missão e Valores</a>
-  <a href="#water"    onclick="closeMobileMenu()">Campanha</a>
-  <a href="#footer"   onclick="closeMobileMenu()">Contato</a>
-  <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()">Doe Agora →</a>
-</div>
-
 <main>
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== SEÇÃO PRINCIPAL ===== -->
   <section id="hero" aria-label="Apresentação do Projeto Soul Surf">
     <div class="hero-bg" id="heroBg" role="img" aria-label="Surfista no oceano representando transformação e esperança"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -732,7 +447,7 @@
     </div>
   </section>
 
-  <!-- ===== STATS ===== -->
+  <!-- ===== ESTATÍSTICAS ===== -->
   <section id="stats" aria-label="Números de impacto do projeto">
     <div class="container">
       <div class="stats-grid">
@@ -756,7 +471,7 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
+  <!-- ===== SOBRE ===== -->
   <section id="about" aria-labelledby="about-heading">
     <div class="container">
       <div class="about-grid">
@@ -794,7 +509,7 @@
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
+  <!-- ===== PROJETOS ===== -->
   <section id="projects" aria-labelledby="projects-heading">
     <div class="container">
       <div class="section-header">
@@ -811,7 +526,7 @@
           <div class="project-card-body">
             <span class="project-card-tag">Esporte</span>
             <h3>Do morro pro mar</h3>
-            <p>Promover a inclusão social de crianças e adolescentes em situação de vulnerabilidade dos bairros distantes das praias,  da cidade de Itanhém, por meio da prática do surf.Também incentivamos o cuidado com o meio ambiente e preparando nossos jovens para um futuro melhor.</p>
+            <p>Promover a inclusão social de crianças e adolescentes em situação de vulnerabilidade dos bairros distantes das praias, da cidade de Itanhaém, por meio da prática do surf. Também incentivamos o cuidado com o meio ambiente e preparando nossos jovens para um futuro melhor.</p>
           </div>
         </article>
 
@@ -840,7 +555,7 @@
     </div>
   </section>
 
-  <!-- ===== GALLERY ===== -->
+  <!-- ===== GALERIA ===== -->
   <section id="gallery" aria-labelledby="gallery-heading">
     <div class="container">
       <div class="section-header">
@@ -874,7 +589,7 @@
     </div>
   </section>
 
-  <!-- ===== MISSION / VISION / VALUES ===== -->
+  <!-- ===== MISSÃO / VISÃO / VALORES ===== -->
   <section id="mvv" aria-labelledby="mvv-heading">
     <div class="container">
       <div class="mvv-header">
@@ -904,34 +619,93 @@
     </div>
   </section>
 
-  <!-- ===== CAMPAIGN — ÁGUA ===== -->
+  <!-- ===== CAMPANHAS ===== -->
   <section id="water" aria-labelledby="water-heading">
     <div class="container">
-      <div class="water-grid">
-        <div class="water-text reveal-left">
-          <span class="badge-water">💧 Campanha Urgente</span>
-          <h2 id="water-heading">Precisamos de água doce também</h2>
-          <p>Ajude a instalar um poço artesiano e garantir um banho digno para as crianças depois do surf. Uma atitude simples com impacto enorme na dignidade e saúde de cada jovem. Com sua ajuda, a água chega!</p>
-          <div class="water-btns">
-            <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
-              ♥ Quero Ajudar
-            </a>
-            <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+      <div class="carousel-container">
+        <div class="carousel-slides" id="carouselSlides">
+          <!-- Slide 1: Água -->
+          <div class="slide active">
+            <div class="water-grid">
+              <div class="water-text reveal-left">
+                <span class="badge-water">💧 Campanha Urgente</span>
+                <h2 id="water-heading">Precisamos de água doce também</h2>
+                <p>Ajude a instalar um poço artesiano e garantir um banho digno para as crianças depois do surf. Uma atitude simples com impacto enorme na dignidade e saúde de cada jovem. Com sua ajuda, a água chega!</p>
+                <div class="water-btns">
+                  <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
+                    ♥ Quero Ajudar
+                  </a>
+                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                </div>
+              </div>
+              <div class="water-img reveal-right">
+                <img loading="lazy" src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças com prancha de surf na praia após treino" />
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="water-img reveal-right">
-          <img
-            loading="lazy"
-            src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg"
-            alt="Crianças com prancha de surf na praia após treino"
-          />
+          <!-- Slide 2: Equipamentos -->
+          <div class="slide">
+            <div class="water-grid">
+              <div class="water-text reveal-left">
+                <span class="badge-water">🏄 Equipamentos</span>
+                <h2>Pranchas e acessórios para todos</h2>
+                <p>Precisamos de pranchas de surf, coletes salva-vidas e equipamentos de segurança para expandir nossas aulas. Cada doação permite que mais jovens entrem no mar e descubram o poder transformador do surf.</p>
+                <div class="water-btns">
+                  <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
+                    ♥ Doe Equipamentos
+                  </a>
+                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                </div>
+              </div>
+              <div class="water-img reveal-right">
+                <img loading="lazy" src="./fotos/IMG_4146.JPG" alt="Crianças aprendendo técnicas de surf na areia" />
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3: Educação -->
+          <div class="slide">
+            <div class="water-grid">
+              <div class="water-text reveal-left">
+                <span class="badge-water">📚 Educação</span>
+                <h2>Materiais escolares para o futuro</h2>
+                <p>Apoie a compra de livros, cadernos e materiais didáticos para reforçar o aprendizado dos jovens. Educação vai além do surf: preparamos nossos alunos para uma vida plena e oportunidades reais.</p>
+                <div class="water-btns">
+                  <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
+                    ♥ Doe Materiais
+                  </a>
+                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                </div>
+              </div>
+              <div class="water-img reveal-right">
+                <img loading="lazy" src="./fotos/IMG_4449.JPG" alt="Jovens praticando equilíbrio com prancha no projeto" />
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4: Meio Ambiente -->
+          <div class="slide">
+            <div class="water-grid">
+              <div class="water-text reveal-left">
+                <span class="badge-water">🌊 Meio Ambiente</span>
+                <h2>Preservando nossas praias</h2>
+                <p>Ajude em ações de limpeza e conscientização ambiental. Manter nossas praias limpas é essencial para a saúde do oceano e para que futuras gerações possam surfar em águas cristalinas.</p>
+                <div class="water-btns">
+                  <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
+                    ♥ Doe para o Mar
+                  </a>
+                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                </div>
+              </div>
+              <div class="water-img reveal-right">
+                <img loading="lazy" src="./fotos/Evento%20Soul%20Surf%20Voo-104.jpg" alt="Vista do mar em dia de aula de surf social" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== VIDEO ===== -->
+  <!-- ===== VÍDEO ===== -->
   <section id="video-section" aria-labelledby="video-heading">
     <div class="container">
       <div class="video-header">
@@ -960,25 +734,6 @@
         <h2 id="blog-heading">Novidades e histórias do projeto</h2>
         <p>Conteúdo para mostrar resultados, inspirar apoiadores e fortalecer o SEO orgânico do Soul Surf.</p>
       </div>
-
-      <!--
-        ╔══════════════════════════════════════════════════════════════╗
-        ║  ADICIONAR NOVO ARTIGO: copie o bloco <article> abaixo,     ║
-        ║  cole antes do fechamento </div> e preencha os campos.       ║
-        ║                                                              ║
-        ║  <article class="blog-card">                                 ║
-        ║    <img class="blog-thumb" src="./fotos/SUA-FOTO.JPG"        ║
-        ║         alt="Descrição da imagem" loading="lazy" />          ║
-        ║    <div class="blog-content">                                ║
-        ║      <span class="blog-meta">DD Mês AAAA · Categoria</span>  ║
-        ║      <h3>Título do artigo</h3>                               ║
-        ║      <p>Resumo curto do artigo.</p>                          ║
-        ║      <a class="blog-link" href="#">Ler artigo -></a>         ║
-        ║    </div>                                                    ║
-        ║  </article>                                                  ║
-        ╚══════════════════════════════════════════════════════════════╝
-      -->
-        
 
       <div class="blog-grid">
         <!-- ARTIGO 1 -->
@@ -1013,14 +768,11 @@
             <a class="blog-link" href="./artigos/artigo-3.html" aria-label="Ler artigo sobre a campanha da água">Ler artigo -></a>
           </div>
         </article>
-
-        <!-- ➕ COLE O PRÓXIMO ARTIGO AQUI -->
-
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA FINAL ===== -->
+  <!-- ===== CHAMADA PARA AÇÃO FINAL ===== -->
   <section id="cta" aria-labelledby="cta-heading">
     <div class="cta-glow" aria-hidden="true"></div>
     <div class="container cta-content">
@@ -1035,9 +787,6 @@
           <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:17px;padding:18px 44px;">
              Doe Agora
           </a>
-          <a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:17px;padding:18px 44px;">
-            Site Oficial
-          </a>
         </div>
       </div>
     </div>
@@ -1045,107 +794,13 @@
 
 </main>
 
-<!-- ===== FOOTER ===== -->
-<footer id="footer" aria-label="Rodapé">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" style="display:inline-flex;align-items:center;gap:12px;color:#fff;" aria-label="Soul Surf — voltar ao início">
-          <div class="nav-logo-icon" aria-hidden="true">
-            <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
-          </div>
-          <div class="nav-logo-text">
-            <strong>Soul Surf</strong>
-            <span>Do Mar Pra Vida</span>
-          </div>
-        </a>
-        <p>Projeto social que usa o surf como ferramenta de inclusão, educação e transformação de vidas em Itanhaém/SP desde 2021.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Projeto</h4>
-        <ul>
-          <li><a href="#about">O Projeto</a></li>
-          <li><a href="#projects">Iniciativas</a></li>
-          <li><a href="./apoie-o-soul-surf.html">Apoie o Soul Surf</a></li>
-          <li><a href="#gallery">Galeria</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#mvv">Missão e Valores</a></li>
-          <li><a href="#water">Campanha Água</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Transparência</h4>
-        <ul>
-          <li><a href="./transparencia.html">Central de Transparência</a></li>
-          <li><a href="./documentos/prestacao-de-contas.html" target="_blank" rel="noopener noreferrer">Prestação de contas</a></li>
-          <li><a href="./documentos/relatorios-anuais.html" target="_blank" rel="noopener noreferrer">Relatórios anuais</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Doe</h4>
-        <ul>
-          <li><a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Via Benfeitoria</a></li>
-          <li><a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer">Outras formas</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Projeto Soul Surf — Ass. de Surf Cibratel. Todos os direitos reservados.</p>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/projetosoulsurf/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Projeto Soul Surf">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </a>
-        <a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer" aria-label="Site oficial do Projeto Soul Surf">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- ===== GSAP SCRIPTS ===== -->
+<!-- ===== SCRIPTS ===== -->
+<script src="js/shared.js"></script>
 <script>
   window.addEventListener('load', function () {
     gsap.registerPlugin(ScrollTrigger);
 
-    // --- Navbar scroll ---
-    const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-      lastScroll = y;
-    }, { passive: true });
-
-    // --- Mobile menu ---
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let menuOpen = false;
-
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      hamburger.setAttribute('aria-expanded', menuOpen);
-      if (menuOpen) {
-        mobileMenu.classList.add('open');
-        gsap.to(hamburger.querySelectorAll('span')[0], { rotation: 45, y: 7, duration: .28 });
-        gsap.to(hamburger.querySelectorAll('span')[1], { opacity: 0, duration: .2 });
-        gsap.to(hamburger.querySelectorAll('span')[2], { rotation: -45, y: -7, duration: .28 });
-      } else {
-        closeMobileMenu();
-      }
-    });
-
-    // --- Hero animation timeline ---
+    // --- Hero ---
     const heroTl = gsap.timeline({ delay: .35 });
     heroTl
       .to('#heroBadge', { opacity: 1, y: 0, duration: .6, ease: 'power2.out' })
@@ -1155,13 +810,13 @@
       .to('#heroCtas', { opacity: 1, y: 0, duration: .6, ease: 'power2.out' }, '-=.35')
       .to('#scrollHint', { opacity: 1, duration: .5 }, '-=.15');
 
-    // --- Hero parallax ---
+    // --- Paralaxe do hero ---
     gsap.to('#heroBg', {
       yPercent: 28, ease: 'none',
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
     });
 
-    // --- Stats counters ---
+    // --- Contadores de estatísticas ---
     document.querySelectorAll('.stat-item').forEach(item => {
       const counter = item.querySelector('.counter');
       const target = parseInt(counter.dataset.target, 10);
@@ -1177,7 +832,7 @@
       });
     });
 
-    // --- Generic scroll reveals ---
+    // --- Revelações genéricas de rolagem ---
     gsap.utils.toArray('.reveal').forEach(el => {
       gsap.to(el, { opacity: 1, y: 0, duration: .85, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
@@ -1195,7 +850,7 @@
         scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
     });
 
-    // --- Project cards stagger ---
+    // --- Espaçamento dos cartões de projeto ---
     gsap.utils.toArray('.project-card').forEach((card, i) => {
       gsap.to(card, {
         opacity: 1, y: 0, duration: .72, delay: i * .13, ease: 'power2.out',
@@ -1203,7 +858,7 @@
       });
     });
 
-    // --- MVV cards stagger ---
+    // --- Espaçamento dos cartões MVV ---
     gsap.utils.toArray('.mvv-card').forEach((card, i) => {
       gsap.to(card, {
         opacity: 1, y: 0, duration: .72, delay: i * .16, ease: 'power2.out',
@@ -1211,28 +866,22 @@
       });
     });
 
-    // --- Gallery and blog cards stagger ---
+    // --- Espaçamento dos cartões de galeria e blog ---
     gsap.utils.toArray('.gallery-item, .blog-card').forEach((card, i) => {
       gsap.to(card, {
-        opacity: 1,
-        y: 0,
-        duration: .7,
-        delay: (i % 3) * .12,
-        ease: 'power2.out',
+        opacity: 1, y: 0, duration: .7, delay: (i % 3) * .12, ease: 'power2.out',
         scrollTrigger: { trigger: card, start: 'top 90%', once: true }
       });
     });
 
-    // --- Navbar fade in ---
+    // --- Fade-in da barra de navegação ---
     gsap.from('#navbar', { opacity: 0, y: -20, duration: .8, ease: 'power2.out' });
 
-    // Show floating CTA after hero section scroll
+    // --- Mostrar CTA flutuante após rolagem da seção hero ---
     ScrollTrigger.create({
       trigger: '#stats',
       start: 'top center',
-      onEnter: () => {
-        showCtaFloating();
-      },
+      onEnter: () => { showCtaFloating(); },
       once: false
     });
   });
@@ -1247,21 +896,25 @@
     gsap.to(hamburger.querySelectorAll('span')[2], { rotation: 0, y: 0, duration: .28 });
   }
 
-  // --- Floating CTA visibility control ---
   function showCtaFloating() {
     const cta = document.getElementById('ctaFloating');
-    if (cta && !cta.classList.contains('show')) {
-      cta.classList.add('show');
-    }
+    if (cta && !cta.classList.contains('show')) cta.classList.add('show');
   }
 
   function closeCtaFloating() {
     const cta = document.getElementById('ctaFloating');
-    if (cta) {
-      cta.classList.remove('show');
-    }
+    if (cta) cta.classList.remove('show');
   }
 
+  // --- Carousel auto-play ---
+  let currentSlide = 0;
+  const carouselSlides = document.getElementById('carouselSlides');
+  const totalSlides = 4;
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    carouselSlides.style.transform = `translateX(-${currentSlide * 25}%)`;
+  }, 5000); // Muda a cada 5 segundos
 </script>
 
 </body>

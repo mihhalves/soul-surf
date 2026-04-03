@@ -10,7 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
+  <link rel="stylesheet" href="css/shared.css" />
+
   <style>
+    body { padding-top: 72px; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body { font-family: 'Poppins', sans-serif; color: #333; background: #F7F9FB; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
@@ -137,9 +140,15 @@
     /* ========== DOCS GRID ========== */
     .docs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 24px;
       margin-bottom: 64px;
+    }
+
+    @media (min-width: 1024px) {
+      .docs-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .doc-card {
@@ -258,63 +267,12 @@
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav id="navbar" role="navigation" aria-label="Navegação principal">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="./index.html" class="nav-logo" aria-label="Projeto Soul Surf — início">
-        <div class="nav-logo-icon" aria-hidden="true">
-          <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Soul Surf" />
-        </div>
-        <div class="nav-logo-text">
-          <strong>Soul Surf</strong>
-          <span>Projeto Social</span>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="./index.html#home">Inicio</a></li>
-        <li><a href="./index.html#sobre">Sobre</a></li>
-        <li><a href="./index.html#projetos">Iniciativas</a></li>
-        <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
-        <li><a href="./index.html#gallery">Galeria</a></li>
-        <li><a href="./index.html#mvv">Missão</a></li>
-        <li><a href="./index.html#water">Campanha</a></li>
-        <li><a href="./transparencia.html" class="active">Transparência</a></li>
-        <li><a href="./index.html#footer">Contato</a></li>
-      </ul>
-
-      <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="nav-cta btn btn-primary">
-        Doe Agora
-      </a>
-
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- ===== MOBILE MENU ===== -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
-  <a href="./index.html#home"    onclick="closeMobileMenu()">Inicio</a>
-  <a href="./index.html#sobre"   onclick="closeMobileMenu()">Sobre</a>
-  <a href="./index.html#projetos" onclick="closeMobileMenu()">Iniciativas</a>
-  <a href="./apoie-o-soul-surf.html" onclick="closeMobileMenu()">Apoie</a>
-  <a href="./index.html#gallery" onclick="closeMobileMenu()">Galeria</a>
-  <a href="./index.html#mvv"     onclick="closeMobileMenu()">Missão e Valores</a>
-  <a href="./index.html#water"   onclick="closeMobileMenu()">Campanha</a>
-  <a href="./transparencia.html" onclick="closeMobileMenu()">Transparência</a>
-  <a href="./index.html#footer"  onclick="closeMobileMenu()">Contato</a>
-  <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()">Doe Agora →</a>
-</div>
-
 <!-- ===== PAGE HERO ===== -->
 <section class="page-hero" aria-label="Cabeçalho da página de transparência">
   <div class="container">
     <div class="page-hero-content">
-      <div class="page-hero-badge">📋 Prestação de Contas</div>
-      <h1>Transparência <em>total</em></h1>
+      <div class="page-hero-badge">📋 Construindo Confiança Juntos</div>
+      <h1>Transparência <em>Total</em></h1>
       <p>Acreditamos que a confiança se constrói com informação. Aqui você encontra todos os documentos institucionais, relatórios e comprovantes do Projeto Soul Surf.</p>
     </div>
   </div>
@@ -406,114 +364,51 @@
           <a href="./documentos/prestacao-contas-2024.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
         </div>
       </div>
+
+      <!-- DOCUMENTOS LEGAIS -->
+      <div class="doc-card">
+        <div class="doc-icon">📋</div>
+        <div class="doc-info">
+          <span class="doc-tag">Legais</span>
+          <h3>Documentos Legais</h3>
+          <p>Documentos legais complementares da associação, incluindo certificados e autorizações.</p>
+        </div>
+        <div class="doc-actions">
+          <a href="./documentos/documentos-oficiais.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
+        </div>
+      </div>
+
+      <!-- PARCEIROS INSTITUCIONAIS -->
+      <div class="doc-card">
+        <div class="doc-icon">🤝</div>
+        <div class="doc-info">
+          <span class="doc-tag">Parcerias</span>
+          <h3>Nossos Parceiros</h3>
+          <p>Parceiros que ajudam nosso projeto a alcançar mais pessoas e impactar a comunidade.</p>
+        </div>
+        <div class="doc-actions">
+          <a href="./documentos/parceiros-institucionais.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
+        </div>
+      </div>
+
     </div>
 
     <!-- INFO STRIP -->
     <div class="info-strip">
       <div class="info-strip-text">
-        <h3>Dúvidas ou solicitações?</h3>
-        <p>Caso precise de algum documento específico ou tenha dúvidas sobre nossa gestão, entre em contato pelo Instagram ou pelo e-mail do projeto. Somos 100% transparentes.</p>
+        <h3>Dúvidas ou Solicitações?</h3>
+        <p>Caso precise de algum documento específico ou tenha dúvidas sobre nossa gestão, entre em contato pelo Whatsapp ou pelo e-mail do projeto. Somos 100% transparentes.</p>
       </div>
-      <a href="https://www.instagram.com/projetosoulsurf/" target="_blank" rel="noopener noreferrer" class="btn-white">
-        📲 Falar pelo Instagram
+      <a href="https://api.whatsapp.com/send/?phone=%2B5511930003945&text&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-white">
+      📞 Nosso Whatsapp
+      <a href="mailto:projetosoulsurf.contato@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-white">
+      📫 E-mail do Projeto
       </a>
     </div>
 
   </div>
 </main>
 
-<!-- ===== FOOTER ===== -->
-<footer id="footer" aria-label="Rodapé">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="./index.html" style="display:inline-flex;align-items:center;gap:12px;color:#fff;">
-          <div class="nav-logo-icon" aria-hidden="true">
-            <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Soul Surf" />
-          </div>
-          <div class="nav-logo-text">
-            <strong>Soul Surf</strong>
-            <span>Do Mar Pra Vida</span>
-          </div>
-        </a>
-        <p>Projeto social que usa o surf como ferramenta de inclusão, educação e transformação de vidas em Itanhaém/SP desde 2021.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Projeto</h4>
-        <ul>
-          <li><a href="./index.html#about">O Projeto</a></li>
-          <li><a href="./index.html#projects">Iniciativas</a></li>
-          <li><a href="./apoie-o-soul-surf.html">Apoie o Soul Surf</a></li>
-          <li><a href="./index.html#gallery">Galeria</a></li>
-          <li><a href="./index.html#mvv">Missão e Valores</a></li>
-          <li><a href="./index.html#water">Campanha Água</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Transparência</h4>
-        <ul>
-          <li><a href="./transparencia.html">Portal</a></li>
-          <li><a href="./transparencia.html">Documentos</a></li>
-          <li><a href="./transparencia.html">Relatórios</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Doe</h4>
-        <ul>
-          <li><a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Via Benfeitoria</a></li>
-          <li><a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer">Outras formas</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Projeto Soul Surf — Ass. de Surf Cibratel. Todos os direitos reservados.</p>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/projetosoulsurf/" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </a>
-        <a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer" aria-label="Site oficial">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  let menuOpen = false;
-
-  hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    hamburger.setAttribute('aria-expanded', menuOpen);
-    mobileMenu.classList.toggle('open', menuOpen);
-    const spans = hamburger.querySelectorAll('span');
-    if (menuOpen) {
-      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-    }
-  });
-
-  function closeMobileMenu() {
-    menuOpen = false;
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileMenu.classList.remove('open');
-    hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-  }
-</script>
-
+<script src="js/shared.js"></script>
 </body>
 </html>
