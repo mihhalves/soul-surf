@@ -155,7 +155,7 @@ h1, h2, h3 { font-family: 'Glegoo', serif; }
 .nav-links li { flex: 0 0 auto; }
 .nav-links a {
   display: block; white-space: nowrap;
-  color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500; line-height: 1.2;
+  color: rgba(255,255,255,.7); font-size: 14px; font-weight: 500; line-height: 1.2;
   position: relative; transition: color .2s;
 }
 .nav-links a::after {
