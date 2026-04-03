@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Transparência institucional do Projeto Soul Surf." />
+  <meta name="theme-color" content="#0073A8" />
+  <title>Transparência Institucional | Soul Surf</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    :root {
+      --blue: #0073A8;
+      --blue-dark: #005a84;
+      --green: #4D917B;
+      --white: #fff;
+      --text: #333333;
+      --text-light: #666666;
+      --bg-light: #F7F9FB;
+      --bg-dark: #0a1628;
+      --bg-navy: #051223;
+      --border: #E6E6E6;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+    h1, h2, h3 { font-family: 'Glegoo', serif; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 24px; border-radius: 50px;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
+      cursor: pointer; border: none; transition: all 0.3s ease;
+      text-decoration: none; white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,115,168,.35); }
+
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,22,40,.97);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.35);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 72px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; color: #fff; }
+    .nav-logo-icon {
+      width: 44px; height: 44px; border-radius: 13px;
+      background: rgba(0,115,168,.22); border: 1px solid rgba(0,115,168,.45);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .nav-logo-text strong { display: block; font-size: 18px; font-weight: 800; letter-spacing: .04em; line-height: 1.2; }
+    .nav-logo-text span { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .12em; text-transform: uppercase; }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      color: rgba(255,255,255,.75); font-size: 14px; font-weight: 500;
+      transition: color .2s; position: relative; padding-bottom: 4px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--blue); transition: width .3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .page-hero {
+      padding: 140px 0 72px;
+      background: linear-gradient(130deg, rgba(5,18,35,.95) 0%, rgba(0,50,90,.8) 52%, rgba(5,18,35,.72) 100%);
+      color: #fff;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,115,168,.22); border: 1px solid rgba(0,115,168,.45);
+      border-radius: 50px; padding: 8px 20px;
+      color: rgba(255,255,255,.88); font-size: 12px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .page-hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.04;
+      margin-bottom: 16px;
+    }
+    .page-hero p { max-width: 780px; color: rgba(255,255,255,.82); font-size: 18px; line-height: 1.7; }
+
+    .section-wrap { padding: 84px 0; background: var(--bg-light); }
+    .section-header { margin-bottom: 34px; }
+    .section-header .label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 14px;
+    }
+    .section-header h2 { font-size: clamp(30px, 4vw, 52px); color: var(--bg-dark); margin-bottom: 12px; }
+    .section-header p { font-size: 17px; color: var(--text-light); line-height: 1.75; max-width: 840px; }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .doc-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.05);
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+    }
+    .doc-tag {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .doc-card h3 { font-size: 28px; color: var(--bg-dark); margin-bottom: 10px; line-height: 1.2; }
+    .doc-card p { color: var(--text-light); line-height: 1.75; margin-bottom: 18px; }
+    .doc-card .btn { margin-top: auto; width: fit-content; }
+
+    .highlight-box {
+      margin-top: 28px;
+      background: linear-gradient(140deg, #07213a 0%, #0a3155 60%, #0d4469 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .highlight-box p { color: rgba(255,255,255,.82); line-height: 1.8; margin-top: 8px; }
+
+    .pdf-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,18,35,.82);
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .pdf-modal.open { display: flex; }
+    .pdf-modal-dialog {
+      width: min(1080px, 100%);
+      height: min(86vh, 900px);
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(0,0,0,.4);
+      display: flex;
+      flex-direction: column;
+    }
+    .pdf-modal-header {
+      background: var(--bg-navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+    }
+    .pdf-modal-header h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      font-family: 'Poppins', sans-serif;
+    }
+    .pdf-modal-close {
+      background: rgba(255,255,255,.16);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .pdf-modal-close:hover { background: rgba(255,255,255,.25); }
+    .pdf-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #f4f7fa;
+    }
+    body.modal-open { overflow: hidden; }
+
+    #footer { background: var(--bg-navy); border-top: 1px solid rgba(255,255,255,.06); padding: 64px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-brand p { margin-top: 18px; font-size: 14px; color: rgba(255,255,255,.4); line-height: 1.72; max-width: 290px; }
+    .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 20px; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col li a { color: rgba(255,255,255,.42); font-size: 14px; transition: color .2s; }
+    .footer-col li a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { color: rgba(255,255,255,.28); font-size: 13px; }
+
+    @media (max-width: 1024px) {
+      .docs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      #navbar { padding-top: env(safe-area-inset-top); }
+      .nav-inner { height: auto; min-height: 72px; padding: 12px 0 10px; flex-wrap: wrap; gap: 12px; }
+      .nav-links { display: flex; order: 3; width: 100%; overflow-x: auto; gap: 16px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { white-space: nowrap; font-size: 13px; padding-bottom: 8px; }
+      .page-hero { padding-top: 132px; }
+      .docs-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar" role="navigation" aria-label="Navegação principal">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="Projeto Soul Surf - início">
+        <div class="nav-logo-icon" aria-hidden="true">
+          <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
+        </div>
+        <div class="nav-logo-text">
+          <strong>Soul Surf</strong>
+          <span>Projeto Social</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="./index.html#about">O Projeto</a></li>
+        <li><a href="./index.html#projects">Iniciativas</a></li>
+        <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
+        <li><a href="./index.html#gallery">Galeria</a></li>
+        <li><a href="./transparencia.html" class="active">Transparência</a></li>
+        <li><a href="./index.html#footer">Contato</a></li>
+      </ul>
+
+      <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Doe Agora
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="page-hero" aria-labelledby="transparencia-heading">
+    <div class="container">
+      <span class="hero-badge">Transparência Institucional</span>
+      <h1 id="transparencia-heading">Compromisso com clareza e prestação de contas</h1>
+      <p>
+        Nesta área você encontra os principais documentos institucionais, dados de impacto e informações oficiais do Soul Surf.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-wrap" aria-label="Documentos de transparência">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Acesso Público</span>
+        <h2>Documentos oficiais e dados institucionais</h2>
+        <p>Todos os links abaixo abrem os documentos correspondentes para consulta pública.</p>
+      </div>
+
+      <div class="docs-grid">
+        <article class="doc-card">
+          <span class="doc-tag">Cadastro</span>
+          <h3>CNPJ</h3>
+          <p>Dados cadastrais e situação da associação perante os órgãos oficiais.</p>
+          <a class="btn btn-primary open-pdf-modal" href="#" data-pdf="./documentos/CNPJ.pdf" data-title="CNPJ - Soul Surf">Abrir documento</a>
+        </article>
+
+        <article class="doc-card">
+          <span class="doc-tag">Governança</span>
+          <h3>Estatuto</h3>
+          <p>Documento que define regras, objetivos, estrutura e funcionamento institucional.</p>
+          <a class="btn btn-primary" href="./documentos/estatuto.html" target="_blank" rel="noopener noreferrer">Abrir documento</a>
+        </article>
+
+        <article class="doc-card">
+          <span class="doc-tag">Financeiro</span>
+          <h3>Prestação de contas</h3>
+          <p>Resumo das receitas, despesas e aplicação de recursos por período.</p>
+          <a class="btn btn-primary" href="./documentos/prestacao-de-contas.html" target="_blank" rel="noopener noreferrer">Abrir documento</a>
+        </article>
+
+        <article class="doc-card">
+          <span class="doc-tag">Resultados</span>
+          <h3>Relatórios anuais</h3>
+          <p>Compilado anual com metas, ações realizadas e indicadores de entrega.</p>
+          <a class="btn btn-primary" href="./documentos/relatorios-anuais.html" target="_blank" rel="noopener noreferrer">Abrir documento</a>
+        </article>
+
+        <article class="doc-card">
+          <span class="doc-tag">Rede de apoio</span>
+          <h3>Parceiros institucionais</h3>
+          <p>Organizações e empresas parceiras que impulsionam o impacto social do projeto.</p>
+          <a class="btn btn-primary" href="./documentos/parceiros-institucionais.html" target="_blank" rel="noopener noreferrer">Abrir documento</a>
+        </article>
+
+        <article class="doc-card">
+          <span class="doc-tag">Impacto</span>
+          <h3>Dados de impacto</h3>
+          <p>Números consolidados de atendimento, alcance territorial e transformação social.</p>
+          <a class="btn btn-primary" href="./documentos/dados-de-impacto.html" target="_blank" rel="noopener noreferrer">Abrir documento</a>
+        </article>
+
+        <article class="doc-card">
+          <span class="doc-tag">Conformidade</span>
+          <h3>Documentos oficiais</h3>
+          <p>Atas, certidões e demais documentos formais relevantes para governança.</p>
+          <a class="btn btn-primary" href="./documentos/documentos-oficiais.html" target="_blank" rel="noopener noreferrer">Abrir documento</a>
+        </article>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Atualização contínua</h3>
+        <p>Esta área é atualizada periodicamente. Para solicitações adicionais, entre em contato pelo e-mail contato@projetosoulsurf.org.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer" aria-label="Rodapé">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="./index.html#hero" style="display:inline-flex;align-items:center;gap:12px;color:#fff;" aria-label="Soul Surf - voltar ao início">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Logo do Projeto Soul Surf" />
+          </div>
+          <div class="nav-logo-text">
+            <strong>Soul Surf</strong>
+            <span>Do Mar Pra Vida</span>
+          </div>
+        </a>
+        <p>Projeto social que usa o surf como ferramenta de inclusão, educação e transformação de vidas em Itanhaém/SP desde 2021.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Projeto</h4>
+        <ul>
+          <li><a href="./index.html#about">O Projeto</a></li>
+          <li><a href="./index.html#projects">Iniciativas</a></li>
+          <li><a href="./apoie-o-soul-surf.html">Apoie o Soul Surf</a></li>
+          <li><a href="./transparencia.html">Transparência</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Transparência</h4>
+        <ul>
+          <li><a href="#" class="open-pdf-modal" data-pdf="./documentos/CNPJ.pdf" data-title="CNPJ - Soul Surf">CNPJ</a></li>
+          <li><a href="./documentos/prestacao-de-contas.html" target="_blank" rel="noopener noreferrer">Prestação de contas</a></li>
+          <li><a href="./documentos/relatorios-anuais.html" target="_blank" rel="noopener noreferrer">Relatórios anuais</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@projetosoulsurf.org">contatoassociacaodesurf@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/projetosoulsurf/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Projeto Soul Surf - Ass. de Surf Cibratel. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="pdf-modal" id="pdfModal" aria-hidden="true" role="dialog" aria-label="Visualizador de documento">
+  <div class="pdf-modal-dialog" role="document">
+    <div class="pdf-modal-header">
+      <h3 id="pdfModalTitle">Documento</h3>
+      <button type="button" class="pdf-modal-close" id="pdfModalClose" aria-label="Fechar visualizador">×</button>
+    </div>
+    <iframe class="pdf-frame" id="pdfFrame" title="Visualizador de PDF"></iframe>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const modal = document.getElementById('pdfModal');
+    const frame = document.getElementById('pdfFrame');
+    const title = document.getElementById('pdfModalTitle');
+    const closeBtn = document.getElementById('pdfModalClose');
+    const triggers = document.querySelectorAll('.open-pdf-modal');
+
+    function openModal(pdfUrl, modalTitle) {
+      frame.src = pdfUrl;
+      title.textContent = modalTitle || 'Documento';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      frame.src = '';
+    }
+
+    triggers.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const pdfUrl = link.getAttribute('data-pdf');
+        const modalTitle = link.getAttribute('data-title');
+        openModal(pdfUrl, modalTitle);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
