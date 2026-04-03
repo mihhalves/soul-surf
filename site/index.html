@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Projeto Social Soul Surf — Transformando vidas de crianças e adolescentes em vulnerabilidade social através do surf em Itanhaém/SP. Do mar pra vida." />
   <meta name="keywords" content="projeto social surf, soul surf, itanhaém, inclusão social, surf crianças, ONG surf, associação surf cibratel" />
   <meta property="og:title" content="Projeto Soul Surf — Do Mar Pra Vida" />
@@ -15,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
 
+  <link rel="preload" as="image" href="./fotos/IMG_4165.JPG" fetchpriority="high" />
   <link rel="stylesheet" href="css/shared.css" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -29,11 +31,17 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('./fotos/IMG_4165.JPG') center/cover no-repeat;
       will-change: transform;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; display: block;
+      object-fit: cover; object-position: center center;
+      transform: scale(1.02);
     }
     .hero-overlay {
       position: absolute; inset: 0;
+      z-index: 1;
       background: linear-gradient(135deg, rgba(5,18,35,.93) 0%, rgba(0,50,90,.72) 52%, rgba(5,18,35,.58) 100%);
     }
     .hero-content { position: relative; z-index: 10; max-width: 800px; }
@@ -130,6 +138,15 @@
 
     /* ========== SECTION HEADER ========== */
     .section-header { margin-bottom: 56px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
     .section-header h2 { font-size: clamp(28px, 3.8vw, 46px); color: var(--bg-dark); line-height: 1.2; margin-bottom: 14px; }
     .section-header p { font-size: 17px; color: var(--text-light); line-height: 1.7; max-width: 600px; }
 
@@ -153,32 +170,6 @@
     }
     .project-card-body h3 { font-size: 22px; color: var(--bg-dark); margin-bottom: 10px; }
     .project-card-body p { font-size: 15px; color: var(--text-light); line-height: 1.72; }
-
-    /* ========== MISSION/VISION/VALUES ========== */
-    #mvv { padding: 108px 0; background: var(--white); }
-    .mvv-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
-    .mvv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
-    .mvv-card {
-      padding: 40px 36px; border-radius: 24px; border: 1px solid var(--border);
-      position: relative; overflow: hidden;
-      opacity: 0; transform: translateY(34px);
-      transition: box-shadow .3s;
-    }
-    .mvv-card:hover { box-shadow: 0 14px 44px rgba(0,0,0,.09); }
-    .mvv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
-    .mvv-card.mission::before { background: var(--blue); }
-    .mvv-card.vision::before  { background: var(--green); }
-    .mvv-card.values::before  { background: var(--gold); }
-    .mvv-icon {
-      width: 54px; height: 54px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px; margin-bottom: 22px;
-    }
-    .mvv-card.mission .mvv-icon { background: rgba(0,115,168,.1); }
-    .mvv-card.vision  .mvv-icon { background: rgba(77,145,123,.1); }
-    .mvv-card.values  .mvv-icon { background: rgba(245,166,35,.1); }
-    .mvv-card h3 { font-size: 26px; color: var(--bg-dark); margin-bottom: 16px; }
-    .mvv-card p { font-size: 15px; color: var(--text-light); line-height: 1.8; }
 
     /* ========== CAMPANHA ========== */
     #water {
@@ -358,7 +349,6 @@
       #hero { align-items: flex-start; }
       .hero-content { padding-top: calc(108px + env(safe-area-inset-top)); }
       .projects-grid { grid-template-columns: 1fr; }
-      .mvv-grid { grid-template-columns: 1fr; }
       .blog-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item.wide,
@@ -372,7 +362,6 @@
       .hero-subtitle { font-size: 16px; }
       .hero-desc { font-size: 15px; margin-bottom: 28px; }
       .project-card-body,
-      .mvv-card,
       .blog-content { padding-left: 20px; padding-right: 20px; }
       .scroll-hint { display: none; }
       .about-badge { position: static; margin-top: 16px; display: inline-block; }
@@ -402,7 +391,9 @@
 
   <!-- ===== SEÇÃO PRINCIPAL ===== -->
   <section id="hero" aria-label="Apresentação do Projeto Soul Surf">
-    <div class="hero-bg" id="heroBg" role="img" aria-label="Surfista no oceano representando transformação e esperança"></div>
+    <div class="hero-bg" id="heroBg" aria-hidden="true">
+      <img src="./fotos/IMG_4165.JPG" alt="" fetchpriority="high" decoding="async" />
+    </div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="container">
@@ -428,7 +419,7 @@
           <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:16px;padding:16px 36px;">
              Doe Agora
           </a>
-          <a href="#about" class="btn btn-outline" style="font-size:16px;padding:16px 36px;">
+          <a href="#about" class="btn btn-outline-light" style="font-size:16px;padding:16px 36px;">
             Conheça o Projeto
           </a>
         </div>
@@ -491,7 +482,7 @@
             vulnerabilidade, combinando esporte, educação e valores como disciplina, respeito e
             superação.
           </p>
-          <a href="#projects" class="btn btn-primary" style="margin-top:8px;">Ver Nossas Iniciativas</a>
+          <a href="iniciativas.html" class="btn btn-primary" style="margin-top:8px;">Ver Nossas Iniciativas</a>
         </div>
 
         <div class="about-img-wrap reveal-right">
@@ -525,30 +516,30 @@
             alt="Crianças e adolescentes praticando surf — Surf e Inclusão" />
           <div class="project-card-body">
             <span class="project-card-tag">Esporte</span>
-            <h3>Do morro pro mar</h3>
-            <p>Promover a inclusão social de crianças e adolescentes em situação de vulnerabilidade dos bairros distantes das praias, da cidade de Itanhaém, por meio da prática do surf. Também incentivamos o cuidado com o meio ambiente e preparando nossos jovens para um futuro melhor.</p>
+            <h3>Do Morro Pro Mar</h3>
+            <p>Nossa principal iniciativa de inclusão social através do surf. Levamos crianças e adolescentes de bairros distantes para aprender e praticar o esporte em um ambiente seguro e acolhedor.</p>
           </div>
         </article>
 
         <article class="project-card">
           <img class="project-card-img" loading="lazy"
-            src="./fotos/IMG_4656.JPG"
+            src="./fotos/IMG_4449.JPG"
             alt="Crianças e adolescentes em aula de tecnologia no Soul Surf Digitais" />
           <div class="project-card-body">
-            <span class="project-card-tag">Educação</span>
+            <span class="project-card-tag">Educação Digital</span>
             <h3>Soul Surf Digitais</h3>
-            <p>O Soul Surf Digitais nasceu pra preparar nossas crianças e adolescentes para o futuro. Através da tecnologia, ensinamos habilidades digitais, estimulamos a criatividade e abrimos caminhos para oportunidades de estudo e trabalho — tudo isso sem que eles precisem sair da nossa comunidade.</p>
+            <p>Preparamos crianças e adolescentes para o futuro através da tecnologia. Oferecemos cursos de informática básica, programação e habilidades digitais essenciais para o mercado de trabalho.</p>
           </div>
         </article>
 
         <article class="project-card">
           <img class="project-card-img" loading="lazy"
-            src="./fotos/IMG_4654.JPG"
+            src="./fotos/Evento%20Soul%20Surf%20Voo-104.jpg"
             alt="Ação de consciência ambiental na praia — Cultura e Meio Ambiente" />
           <div class="project-card-body">
             <span class="project-card-tag">Meio Ambiente</span>
             <h3>Cultura e Meio Ambiente</h3>
-            <p>Formação cidadã com ações culturais e consciência ambiental ligadas ao oceano. Respeitar o mar é respeitar a vida.</p>
+            <p>Formação cidadã com ações culturais e consciência ambiental ligadas ao oceano. Nossos alunos aprendem a respeitar a natureza e se tornam agentes de mudança em suas comunidades.</p>
           </div>
         </article>
       </div>
@@ -589,36 +580,6 @@
     </div>
   </section>
 
-  <!-- ===== MISSÃO / VISÃO / VALORES ===== -->
-  <section id="mvv" aria-labelledby="mvv-heading">
-    <div class="container">
-      <div class="mvv-header">
-        <span class="section-label">Nossa Essência</span>
-        <h2 id="mvv-heading">Missão, visão e valores que conduzem cada onda</h2>
-      </div>
-
-      <div class="mvv-grid">
-        <div class="mvv-card mission">
-          <div class="mvv-icon" aria-hidden="true">🎯</div>
-          <h3>Missão</h3>
-          <p>Promover a inclusão social de crianças e adolescentes em vulnerabilidade — física, emocional, cognitiva ou social — por meio de projetos educacionais, esportivos, culturais e ambientais vinculados ao surf.</p>
-        </div>
-
-        <div class="mvv-card vision">
-          <div class="mvv-icon" aria-hidden="true">🌊</div>
-          <h3>Visão</h3>
-          <p>Fortalecer a crença na superação e na capacidade humana de vencer os desafios mais inesperados — assim como o surfista enfrenta cada onda com coragem e confiança.</p>
-        </div>
-
-        <div class="mvv-card values">
-          <div class="mvv-icon" aria-hidden="true">⭐</div>
-          <h3>Valores</h3>
-          <p><strong>Respeito · Fraternidade · Solidariedade</strong><br><br>Empatia, autoestima, autoconfiança e fortalecimento dos vínculos familiares. Esses são os pilares que guiam cada aula, cada ação e cada sorriso.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== CAMPANHAS ===== -->
   <section id="water" aria-labelledby="water-heading">
     <div class="container">
@@ -635,7 +596,7 @@
                   <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
                     ♥ Quero Ajudar
                   </a>
-                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                  <a href="#cta" class="btn btn-outline-light">Saiba Mais</a>
                 </div>
               </div>
               <div class="water-img reveal-right">
@@ -654,7 +615,7 @@
                   <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
                     ♥ Doe Equipamentos
                   </a>
-                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                  <a href="#cta" class="btn btn-outline-light">Saiba Mais</a>
                 </div>
               </div>
               <div class="water-img reveal-right">
@@ -673,7 +634,7 @@
                   <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
                     ♥ Doe Materiais
                   </a>
-                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                  <a href="#cta" class="btn btn-outline-light">Saiba Mais</a>
                 </div>
               </div>
               <div class="water-img reveal-right">
@@ -692,7 +653,7 @@
                   <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white">
                     ♥ Doe para o Mar
                   </a>
-                  <a href="#cta" class="btn btn-outline">Saiba Mais</a>
+                  <a href="#cta" class="btn btn-outline-light">Saiba Mais</a>
                 </div>
               </div>
               <div class="water-img reveal-right">
@@ -718,7 +679,8 @@
             src="https://www.youtube.com/embed/2hnO7fT-f_g"
             title="Projeto Soul Surf — Vídeo Institucional"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen=""
             loading="lazy"
           ></iframe>
         </div>
@@ -795,7 +757,7 @@
 </main>
 
 <!-- ===== SCRIPTS ===== -->
-<script src="js/shared.js"></script>
+<script type="module" src="js/shared.js"></script>
 <script>
   window.addEventListener('load', function () {
     gsap.registerPlugin(ScrollTrigger);
@@ -854,14 +816,6 @@
     gsap.utils.toArray('.project-card').forEach((card, i) => {
       gsap.to(card, {
         opacity: 1, y: 0, duration: .72, delay: i * .13, ease: 'power2.out',
-        scrollTrigger: { trigger: card, start: 'top 90%', once: true }
-      });
-    });
-
-    // --- Espaçamento dos cartões MVV ---
-    gsap.utils.toArray('.mvv-card').forEach((card, i) => {
-      gsap.to(card, {
-        opacity: 1, y: 0, duration: .72, delay: i * .16, ease: 'power2.out',
         scrollTrigger: { trigger: card, start: 'top 90%', once: true }
       });
     });

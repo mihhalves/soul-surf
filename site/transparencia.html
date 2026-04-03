@@ -39,19 +39,6 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
 
-    /* ========== BUTTONS ========== */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 26px; border-radius: 50px;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
-      cursor: pointer; border: none; transition: all 0.3s ease;
-      text-decoration: none; white-space: nowrap;
-    }
-    .btn-primary { background: var(--blue); color: #fff; }
-    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,115,168,.4); }
-    .btn-outline-dark { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
-    .btn-outline-dark:hover { background: var(--blue); color: #fff; }
-
     /* ========== NAVBAR ========== */
     #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -215,6 +202,64 @@
     .doc-btn-ghost { background: transparent; color: var(--blue); border: 1.5px solid rgba(0,115,168,.3); }
     .doc-btn-ghost:hover { border-color: var(--blue); background: rgba(0,115,168,.06); }
 
+    .doc-viewer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,18,35,.82);
+      backdrop-filter: blur(4px);
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+    .doc-viewer-overlay.open { display: flex; }
+    .doc-viewer-modal {
+      width: min(1120px, 100%);
+      height: min(86vh, 760px);
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 72px rgba(0,0,0,.4);
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .doc-viewer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 14px;
+      background: #f8fbfe;
+      flex-shrink: 0;
+    }
+    .doc-viewer-header h3 {
+      font-size: 15px;
+      color: var(--bg-dark);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .doc-viewer-close {
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      font-size: 22px;
+      line-height: 1;
+      color: #5a7084;
+      background: #eaf2f8;
+      cursor: pointer;
+    }
+    .doc-viewer-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
     /* ========== INFO STRIP ========== */
     .info-strip {
       background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%);
@@ -225,8 +270,12 @@
     }
     .info-strip-text h3 { font-size: 22px; color: #fff; margin-bottom: 8px; }
     .info-strip-text p  { font-size: 15px; color: rgba(255,255,255,.72); line-height: 1.65; max-width: 520px; }
-    .info-strip .btn-white { background: #fff; color: var(--blue); font-size: 14px; padding: 12px 26px; border-radius: 50px; font-weight: 700; transition: all .3s; }
-    .info-strip .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .info-strip .btn {
+      font-size: 14px;
+      padding: 12px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+    }
 
     /* ========== DIVIDER ========== */
     .section-divider { border: none; border-top: 1px solid var(--border); margin: 64px 0; }
@@ -256,6 +305,7 @@
       .mobile-menu { display: block; }
       .page-hero { padding: 120px 0 56px; }
       .info-strip { padding: 32px 24px; flex-direction: column; }
+      .doc-viewer-modal { height: min(90vh, 760px); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     }
@@ -282,115 +332,17 @@
 <main>
   <div class="container">
 
-    <!-- DOCUMENTOS INSTITUCIONAIS -->
-    <span class="section-label">Documentos Institucionais</span>
-    <h2 class="section-title">Documentação oficial da associação</h2>
-    <p class="section-desc">Registros legais e cadastros que comprovam a atuação formal e transparente do Projeto Soul Surf.</p>
+    <span class="section-label">Documentos</span>
+    <h2 class="section-title">Visualize os arquivos disponíveis</h2>
+    <p class="section-desc">Clique em “Visualizar” para abrir o documento no leitor interno da página.</p>
 
     <div class="docs-grid">
+      <article class="doc-card"><div class="doc-icon gold">📝</div><div class="doc-info"><span class="doc-tag gold">PDF</span><h3>Ata de Eleição</h3><p>Registro oficial da eleição e composição da diretoria.</p></div><div class="doc-actions"><button class="doc-btn doc-btn-primary" data-doc="./documentos/Ata%20de%20Elei%C3%A7%C3%A3o.pdf" data-title="Ata de Eleição">📄 Visualizar</button></div></article>
+      <article class="doc-card"><div class="doc-icon">📄</div><div class="doc-info"><span class="doc-tag">PDF</span><h3>CMDCA</h3><p>Documento relacionado ao conselho municipal dos direitos da criança e adolescente.</p></div><div class="doc-actions"><button class="doc-btn doc-btn-primary" data-doc="./documentos/CMDCA.pdf" data-title="CMDCA">📄 Visualizar</button></div></article>
+      <article class="doc-card"><div class="doc-icon">🪪</div><div class="doc-info"><span class="doc-tag">PDF</span><h3>CNPJ (PDF)</h3><p>Comprovante de cadastro no Cadastro Nacional de Pessoas Jurídicas.</p></div><div class="doc-actions"><button class="doc-btn doc-btn-primary" data-doc="./documentos/CNPJ.pdf" data-title="CNPJ (PDF)">📄 Visualizar</button></div></article>
+      <article class="doc-card"><div class="doc-icon green">💰</div><div class="doc-info"><span class="doc-tag green">PDF</span><h3>Declaração Balancete 2025</h3><p>Declaração financeira e balancete referente ao período de 2025.</p></div><div class="doc-actions"><button class="doc-btn doc-btn-primary" data-doc="./documentos/Declaracao_Balancete_2025.pdf" data-title="Declaração Balancete 2025">📄 Visualizar</button></div></article>
 
-      <!-- CNPJ -->
-      <div class="doc-card">
-        <div class="doc-icon">🪪</div>
-        <div class="doc-info">
-          <span class="doc-tag">Cadastro</span>
-          <h3>CNPJ</h3>
-          <p>Comprovante de cadastro no Cadastro Nacional de Pessoas Jurídicas da Receita Federal.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/cnpj.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
-      <!-- ESTATUTO -->
-      <div class="doc-card">
-        <div class="doc-icon green">📜</div>
-        <div class="doc-info">
-          <span class="doc-tag green">Estatuto</span>
-          <h3>Estatuto Social</h3>
-          <p>Documento que define a missão, estrutura e regras de funcionamento da Associação de Surf Cibratel.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/estatuto.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
-      <!-- ATA DE ELEIÇÃO -->
-      <div class="doc-card">
-        <div class="doc-icon gold">📝</div>
-        <div class="doc-info">
-          <span class="doc-tag gold">Eleição</span>
-          <h3>Ata de Eleição</h3>
-          <p>É um documento oficial que registra como a eleição aconteceu, quem participou, como foram os votos e quem foi eleito, garantindo transparência e validade legal.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/ata-de-eleição.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
-    </div>
-
-    <hr class="section-divider" />
-
-    <!-- RELATÓRIOS -->
-    <span class="section-label">Relatórios & Prestação de Contas</span>
-    <h2 class="section-title">Resultado das nossas ações</h2>
-    <p class="section-desc">Relatórios periódicos de atividades, impacto social e gestão financeira do projeto.</p>
-
-    <div class="docs-grid">
-
-      <!-- RELATÓRIO 2024 -->
-      <div class="doc-card">
-        <div class="doc-icon">📊</div>
-        <div class="doc-info">
-          <span class="doc-tag">Relatório</span>
-          <h3>Relatório Anual 2024</h3>
-          <p>Resumo das atividades, número de jovens atendidos, eventos realizados e impacto gerado em 2024.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/relatorio-2024.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
-      <!-- PRESTAÇÃO DE CONTAS -->
-      <div class="doc-card">
-        <div class="doc-icon green">💰</div>
-        <div class="doc-info">
-          <span class="doc-tag green">Financeiro</span>
-          <h3>Prestação de Contas 2024</h3>
-          <p>Demonstrativo de receitas, despesas e aplicação dos recursos recebidos por doações e parceiros.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/prestacao-contas-2024.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
-      <!-- DOCUMENTOS LEGAIS -->
-      <div class="doc-card">
-        <div class="doc-icon">📋</div>
-        <div class="doc-info">
-          <span class="doc-tag">Legais</span>
-          <h3>Documentos Legais</h3>
-          <p>Documentos legais complementares da associação, incluindo certificados e autorizações.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/documentos-oficiais.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
-      <!-- PARCEIROS INSTITUCIONAIS -->
-      <div class="doc-card">
-        <div class="doc-icon">🤝</div>
-        <div class="doc-info">
-          <span class="doc-tag">Parcerias</span>
-          <h3>Nossos Parceiros</h3>
-          <p>Parceiros que ajudam nosso projeto a alcançar mais pessoas e impactar a comunidade.</p>
-        </div>
-        <div class="doc-actions">
-          <a href="./documentos/parceiros-institucionais.html" class="doc-btn doc-btn-primary">📄 Visualizar</a>
-        </div>
-      </div>
-
+      <article class="doc-card"><div class="doc-icon green">📜</div><div class="doc-info"><span class="doc-tag green">PDF</span><h3>Estatuto (PDF)</h3><p>Estatuto social da associação em versão PDF.</p></div><div class="doc-actions"><button class="doc-btn doc-btn-primary" data-doc="./documentos/Estatuto.pdf" data-title="Estatuto (PDF)">📄 Visualizar</button></div></article>
     </div>
 
     <!-- INFO STRIP -->
@@ -399,16 +351,67 @@
         <h3>Dúvidas ou Solicitações?</h3>
         <p>Caso precise de algum documento específico ou tenha dúvidas sobre nossa gestão, entre em contato pelo Whatsapp ou pelo e-mail do projeto. Somos 100% transparentes.</p>
       </div>
-      <a href="https://api.whatsapp.com/send/?phone=%2B5511930003945&text&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn-white">
-      📞 Nosso Whatsapp
-      <a href="mailto:projetosoulsurf.contato@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-white">
-      📫 E-mail do Projeto
-      </a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="https://api.whatsapp.com/send/?phone=%2B5511930003945&text&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn btn-white">📞 Nosso Whatsapp</a>
+        <a href="mailto:projetosoulsurf.contato@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-white">📫 E-mail do Projeto</a>
+      </div>
     </div>
 
   </div>
 </main>
 
-<script src="js/shared.js"></script>
+<div class="doc-viewer-overlay" id="docViewerOverlay" aria-hidden="true">
+  <div class="doc-viewer-modal" role="dialog" aria-modal="true" aria-labelledby="docViewerTitle">
+    <div class="doc-viewer-header">
+      <h3 id="docViewerTitle">Visualização de documento</h3>
+      <button class="doc-viewer-close" id="docViewerClose" aria-label="Fechar visualização">×</button>
+    </div>
+    <iframe id="docViewerFrame" class="doc-viewer-frame" title="Visualizador de documento" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</div>
+
+<script type="module" src="js/shared.js"></script>
+<script>
+  (function () {
+    const overlay = document.getElementById('docViewerOverlay');
+    const frame = document.getElementById('docViewerFrame');
+    const title = document.getElementById('docViewerTitle');
+    const closeBtn = document.getElementById('docViewerClose');
+
+    function toViewerSrc(path) {
+      if (path.toLowerCase().endsWith('.pdf')) {
+        return `${path}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
+      }
+      return path;
+    }
+
+    function openViewer(path, docTitle) {
+      title.textContent = docTitle || 'Visualização de documento';
+      frame.src = toViewerSrc(path);
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      frame.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-doc]').forEach((btn) => {
+      btn.addEventListener('click', () => openViewer(btn.dataset.doc, btn.dataset.title));
+    });
+
+    closeBtn.addEventListener('click', closeViewer);
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay) closeViewer();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && overlay.classList.contains('open')) closeViewer();
+    });
+  })();
+</script>
 </body>
 </html>

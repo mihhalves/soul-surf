@@ -17,15 +17,14 @@ function loadSharedHeader() {
           </a>
 
           <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="iniciativas.html">Iniciativas</a></li>
-            <li><a href="apoie-o-soul-surf-novo.html">Apoie</a></li>
-            <li><a href="transparencia.html">Transparência</a></li>
-            <li><a href="index.html#gallery">Galeria</a></li>
-            <li><a href="index.html#mvv">Missão</a></li>
-            <li><a href="index.html#water">Campanha</a></li>
-            <li><a href="contato.html">Contato</a></li>
+            <li><a href="./index.html">Início</a></li>
+            <li><a href="./sobre.html">Sobre</a></li>
+            <li><a href="./iniciativas.html">Iniciativas</a></li>
+            <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
+            <li><a href="./index.html#gallery">Galeria</a></li>
+            <li><a href="./sobre.html#mvv">Missão, Visão e Valores</a></li>
+            <li><a href="./transparencia.html">Transparência</a></li>
+            <li><a href="./contato.html">Contato</a></li>
           </ul>
 
           <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="nav-cta btn btn-primary">
@@ -40,15 +39,14 @@ function loadSharedHeader() {
     </nav>
 
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
-      <a href="index.html" onclick="closeMobileMenu()">Inicio</a>
-      <a href="sobre.html" onclick="closeMobileMenu()">Sobre</a>
-      <a href="iniciativas.html" onclick="closeMobileMenu()">Iniciativas</a>
-      <a href="apoie-o-soul-surf-novo.html" onclick="closeMobileMenu()">Apoie</a>
-      <a href="transparencia.html" onclick="closeMobileMenu()">Transparência</a>
-      <a href="index.html#gallery" onclick="closeMobileMenu()">Galeria</a>
-      <a href="index.html#mvv" onclick="closeMobileMenu()">Missão e Valores</a>
-      <a href="index.html#water" onclick="closeMobileMenu()">Campanha</a>
-      <a href="contato.html" onclick="closeMobileMenu()">Contato</a>
+      <a href="./index.html" onclick="closeMobileMenu()">Início</a>
+      <a href="./sobre.html" onclick="closeMobileMenu()">Sobre</a>
+      <a href="./iniciativas.html" onclick="closeMobileMenu()">Iniciativas</a>
+      <a href="./apoie-o-soul-surf.html" onclick="closeMobileMenu()">Apoie</a>
+      <a href="./index.html#gallery" onclick="closeMobileMenu()">Galeria</a>
+      <a href="./sobre.html#mvv" onclick="closeMobileMenu()">Missão, Visão e Valores</a>
+      <a href="./transparencia.html" onclick="closeMobileMenu()">Transparência</a>
+      <a href="./contato.html" onclick="closeMobileMenu()">Contato</a>
     </div>
   `;
 
@@ -77,13 +75,13 @@ function loadSharedFooter() {
           <div class="footer-col">
             <h4>Projeto</h4>
             <ul>
-              <li><a href="sobre.html">O Projeto</a></li>
-              <li><a href="iniciativas.html">Iniciativas</a></li>
-              <li><a href="apoie-o-soul-surf-novo.html">Apoie o Soul Surf</a></li>
-              <li><a href="index.html#gallery">Galeria</a></li>
-              <li><a href="index.html#blog">Blog</a></li>
-              <li><a href="index.html#mvv">Missão e Valores</a></li>
-              <li><a href="index.html#water">Campanha Água</a></li>
+              <li><a href="./sobre.html">O Projeto</a></li>
+              <li><a href="./iniciativas.html">Iniciativas</a></li>
+              <li><a href="./apoie-o-soul-surf.html">Apoie o Soul Surf</a></li>
+              <li><a href="./index.html#gallery">Galeria</a></li>
+              <li><a href="./index.html#blog">Blog</a></li>
+              <li><a href="./sobre.html#mvv">Missão, Visão e Valores</a></li>
+              <li><a href="./index.html#water">Campanha Água</a></li>
             </ul>
           </div>
 
@@ -202,6 +200,10 @@ function closeLegalModal() {
   iframe.src = '';
   document.body.style.overflow = '';
 }
+
+window.closeMobileMenu = closeMobileMenu;
+window.openLegalModal = openLegalModal;
+window.closeLegalModal = closeLegalModal;
 
 // CTA floating
 function setupCtaFloating() {

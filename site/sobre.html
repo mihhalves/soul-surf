@@ -11,14 +11,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
   
-  <link rel="stylesheet" href="./css/shared.css" />
+  <link rel="stylesheet" href="css/shared.css" />
   
   <style>
     body { padding-top: 72px; }
 
     .page-hero {
       padding: 60px 0;
-      background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%);
+      background:
+        linear-gradient(135deg, rgba(0, 115, 168, .82) 0%, rgba(0, 78, 116, .82) 100%),
+        url('./fotos/IMG_4165.JPG') center/cover no-repeat;
       color: #fff; text-align: center;
     }
     .page-hero h1 { font-size: clamp(42px, 6vw, 68px); margin-bottom: 18px; }
@@ -154,7 +156,7 @@
     </section>
 
     <!-- Missão, Visão, Valores -->
-    <section class="content-section" style="background: var(--bg-light);">
+    <section id="mvv" class="content-section" style="background: var(--bg-light);">
       <div class="container">
         <h2 style="text-align: center; margin-bottom: 56px;">Missão, Visão e Valores</h2>
 
@@ -253,6 +255,6 @@
     </section>
   </main>
 
-  <script src="./js/shared.js"></script>
+  <script type="module" src="js/shared.js"></script>
 </body>
 </html>
