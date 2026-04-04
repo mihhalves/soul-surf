@@ -96,7 +96,7 @@ function loadSharedFooter() {
             <h4>Doe</h4>
             <ul>
               <li><a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Via Benfeitoria</a></li>
-              <li><a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer">Outras formas</a></li>
+              <li><a href="./apoie-o-soul-surf.html">Outras formas</a></li>
             </ul>
             <h4 style="margin-top: 28px;">Redes Sociais</h4>
             <div class="footer-social" style="margin-top: 12px;">
