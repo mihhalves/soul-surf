@@ -22,7 +22,6 @@ function loadSharedHeader() {
             <li><a href="./iniciativas.html">Iniciativas</a></li>
             <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
             <li><a href="./index.html#gallery">Galeria</a></li>
-            <li><a href="./sobre.html#mvv">Missão, Visão e Valores</a></li>
             <li><a href="./transparencia.html">Transparência</a></li>
             <li><a href="./contato.html">Contato</a></li>
           </ul>
@@ -44,7 +43,6 @@ function loadSharedHeader() {
       <a href="./iniciativas.html" onclick="closeMobileMenu()">Iniciativas</a>
       <a href="./apoie-o-soul-surf.html" onclick="closeMobileMenu()">Apoie</a>
       <a href="./index.html#gallery" onclick="closeMobileMenu()">Galeria</a>
-      <a href="./sobre.html#mvv" onclick="closeMobileMenu()">Missão, Visão e Valores</a>
       <a href="./transparencia.html" onclick="closeMobileMenu()">Transparência</a>
       <a href="./contato.html" onclick="closeMobileMenu()">Contato</a>
     </div>
