@@ -136,7 +136,7 @@ function loadSharedFooter() {
       <div class="legal-modal">
         <div class="legal-modal-header">
           <h3 id="legalModalTitle">Documento</h3>
-          <button class="legal-modal-close" onclick="closeLegalModal()" aria-label="Fechar">✕</button>
+          <button class="legal-modal-close" onclick="closeLegalModal()" aria-label="Fechar">X</button>
         </div>
         <iframe id="legalModalIframe" src="" title="Documento legal"></iframe>
       </div>
