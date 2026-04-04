@@ -40,6 +40,9 @@
       width: 100%; height: 280px; object-fit: cover;
       transition: transform .5s ease;
     }
+    .initiative-img.img-surf { object-position: center 38%; }
+    .initiative-img.img-digital { object-position: center 30%; }
+    .initiative-img.img-ambiental { object-position: center 42%; }
     .initiative-card:hover .initiative-img { transform: scale(1.05); }
     
     .initiative-content { padding: 32px; }
@@ -77,6 +80,7 @@
       .page-hero { padding: 40px 0; }
       .page-hero h1 { font-size: 32px; }
       .initiatives-grid { grid-template-columns: 1fr; gap: 32px; }
+      .initiative-img { height: 240px; }
       .cta-section h2 { font-size: 28px; }
     }
   </style>
@@ -97,7 +101,7 @@
         <div class="initiatives-grid">
           <!-- Iniciativa 1: Do Morro Pro Mar -->
           <article class="initiative-card">
-            <img class="initiative-img" src="/fotos/IMG_4146.JPG" alt="Crianças praticando surf" loading="lazy" />
+            <img class="initiative-img img-surf" src="./fotos/IMG_4146.JPG" alt="Crianças praticando surf" loading="lazy" />
             <div class="initiative-content">
               <span class="initiative-badge">🏄 Esporte</span>
               <h3>Do Morro Pro Mar</h3>
@@ -117,7 +121,7 @@
 
           <!-- Iniciativa 2: Soul Surf Digitais -->
           <article class="initiative-card">
-            <img class="initiative-img" src="/fotos/IMG_4656.JPG" alt="Aula de tecnologia" loading="lazy" />
+            <img class="initiative-img img-digital" src="./fotos/IMG_4656.JPG" alt="Aula de tecnologia" loading="lazy" />
             <div class="initiative-content">
               <span class="initiative-badge">💻 Educação Digital</span>
               <h3>Soul Surf Digitais</h3>
@@ -137,7 +141,7 @@
 
           <!-- Iniciativa 3: Cultura e Meio Ambiente -->
           <article class="initiative-card">
-            <img class="initiative-img" src="/fotos/IMG_4654.JPG" alt="Ação ambiental na praia" loading="lazy" />
+            <img class="initiative-img img-ambiental" src="./fotos/IMG_4654.JPG" alt="Ação ambiental na praia" loading="lazy" />
             <div class="initiative-content">
               <span class="initiative-badge">🌊 Meio Ambiente</span>
               <h3>Cultura e Meio Ambiente</h3>

@@ -260,6 +260,56 @@
     .gallery-item.tall { grid-column: span 3; min-height: 460px; }
     .gallery-item.square { grid-column: span 3; }
 
+    /* ========== PATROCINADORES ========== */
+    #sponsors { padding: 92px 0; background: #fff; }
+    .sponsors-header { margin-bottom: 30px; }
+    .sponsors-header p { max-width: 680px; }
+    .sponsors-carousel {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    }
+    .sponsors-track {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: max-content;
+      animation: sponsorsScroll 22s linear infinite;
+    }
+    .sponsors-carousel:hover .sponsors-track { animation-play-state: paused; }
+    .sponsor-item {
+      width: clamp(150px, 17vw, 220px);
+      height: 92px;
+      background: linear-gradient(135deg, #ffffff 0%, #f2f8ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+      flex-shrink: 0;
+    }
+    .sponsor-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: none;
+      opacity: 1;
+      transition: transform .25s ease;
+    }
+    .sponsor-item:hover img {
+      transform: scale(1.04);
+    }
+    @keyframes sponsorsScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     /* ========== BLOG ========== */
     #blog { padding: 100px 0; background: var(--bg-light); }
     .blog-grid {
@@ -354,6 +404,7 @@
       .gallery-item.wide,
       .gallery-item.tall,
       .gallery-item.square { grid-column: span 1; min-height: 230px; }
+      .sponsor-item { width: 150px; height: 82px; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn,
       .water-btns .btn,
@@ -576,6 +627,31 @@
           <img src="./fotos/IMG_4654.JPG" alt="Encerramento de atividade ao pôr do sol na praia" loading="lazy" />
           <span>Do Mar Pra Vida</span>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PATROCINADORES ===== -->
+  <section id="sponsors" aria-labelledby="sponsors-heading">
+    <div class="container">
+      <div class="section-header sponsors-header">
+        <span class="section-label">Patrocinadores</span>
+        <h2 id="sponsors-heading">Empresas que fortalecem essa onda</h2>
+        <p>Marcas e instituições que acreditam no impacto social do Soul Surf e ajudam a ampliar nosso alcance.</p>
+      </div>
+
+      <div class="sponsors-carousel" aria-label="Carrossel de patrocinadores do Soul Surf">
+        <div class="sponsors-track">
+          <div class="sponsor-item"><img src="./fotos/bmw.png" alt="BMW" loading="lazy" /></div>
+          <div class="sponsor-item"><img src="./fotos/governo.jpg" alt="Governo" loading="lazy" /></div>
+          <div class="sponsor-item"><img src="./fotos/itau.png" alt="Itaú" loading="lazy" /></div>
+          <div class="sponsor-item"><img src="./fotos/vale.png" alt="Vale" loading="lazy" /></div>
+
+          <div class="sponsor-item"><img src="./fotos/bmw.png" alt="BMW" loading="lazy" /></div>
+          <div class="sponsor-item"><img src="./fotos/governo.jpg" alt="Governo" loading="lazy" /></div>
+          <div class="sponsor-item"><img src="./fotos/itau.png" alt="Itaú" loading="lazy" /></div>
+          <div class="sponsor-item"><img src="./fotos/vale.png" alt="Vale" loading="lazy" /></div>
+        </div>
       </div>
     </div>
   </section>

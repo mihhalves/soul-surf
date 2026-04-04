@@ -88,7 +88,7 @@ function loadSharedFooter() {
             <ul>
               <li><a href="transparencia.html">Portal</a></li>
               <li><a href="transparencia.html">Relatórios</a></li>
-              <li><a href="transparencia.html">Parceiros</a></li>
+              <li><a href="./index.html#sponsors">Parceiros</a></li>
             </ul>
           </div>
 
