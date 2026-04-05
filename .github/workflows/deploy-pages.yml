@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - revert-1-soul-new
+      - restore-main-from-soul-new
   workflow_dispatch:
 
 permissions:
@@ -13,7 +15,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -40,13 +42,10 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages-site
           path: site/dist
 
   deploy:
@@ -60,5 +59,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-site
