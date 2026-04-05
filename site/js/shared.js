@@ -1,7 +1,8 @@
 // Shared JavaScript for navbar, footer, and modals
 
 const baseUrl = import.meta.env.BASE_URL || '/'
-const siteUrl = (path) => new URL(path, window.location.origin + baseUrl).toString()
+const siteBase = new URL(baseUrl, window.location.href)
+const siteUrl = (path) => new URL(path, siteBase).toString()
 const logoUrl = new URL('../fotos/491803886_10233882011684977_8940823745485622745_n.jpg', import.meta.url).href
 
 const urls = {
