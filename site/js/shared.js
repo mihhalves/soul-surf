@@ -1,14 +1,35 @@
 // Shared JavaScript for navbar, footer, and modals
 
+const siteRoot = new URL(/* @vite-ignore */ '../', import.meta.url)
+const siteUrl = (path) => new URL(path, siteRoot).toString()
+
+const urls = {
+  home: siteUrl('index.html'),
+  about: siteUrl('sobre.html'),
+  initiatives: siteUrl('iniciativas.html'),
+  support: siteUrl('apoie-o-soul-surf.html'),
+  transparency: siteUrl('transparencia.html'),
+  contact: siteUrl('contato.html'),
+  gallery: `${siteUrl('index.html')}#gallery`,
+  blog: `${siteUrl('index.html')}#blog`,
+  mvv: `${siteUrl('sobre.html')}#mvv`,
+  water: `${siteUrl('index.html')}#water`,
+  sponsors: `${siteUrl('index.html')}#sponsors`,
+  terms: siteUrl('termos-de-uso.html'),
+  privacy: siteUrl('politica-de-privacidade.html'),
+  cookies: siteUrl('politica-cookies.html'),
+  logo: siteUrl('fotos/491803886_10233882011684977_8940823745485622745_n.jpg'),
+}
+
 // Load shared header
 function loadSharedHeader() {
   const headerHTML = `
     <nav id="navbar" role="navigation" aria-label="Navegação principal">
       <div class="container">
         <div class="nav-inner">
-          <a href="index.html" class="nav-logo" aria-label="Projeto Soul Surf — início">
+          <a href="${urls.home}" class="nav-logo" aria-label="Projeto Soul Surf — início">
             <div class="nav-logo-icon" aria-hidden="true">
-              <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
+              <img src="${urls.logo}" alt="Crianças do Projeto Soul Surf" />
             </div>
             <div class="nav-logo-text">
               <strong>Soul Surf</strong>
@@ -17,13 +38,13 @@ function loadSharedHeader() {
           </a>
 
           <ul class="nav-links">
-            <li><a href="./index.html">Início</a></li>
-            <li><a href="./sobre.html">Sobre</a></li>
-            <li><a href="./iniciativas.html">Iniciativas</a></li>
-            <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
-            <li><a href="./index.html#gallery">Galeria</a></li>
-            <li><a href="./transparencia.html">Transparência</a></li>
-            <li><a href="./contato.html">Contato</a></li>
+            <li><a href="${urls.home}">Início</a></li>
+            <li><a href="${urls.about}">Sobre</a></li>
+            <li><a href="${urls.initiatives}">Iniciativas</a></li>
+            <li><a href="${urls.support}">Apoie</a></li>
+            <li><a href="${urls.gallery}">Galeria</a></li>
+            <li><a href="${urls.transparency}">Transparência</a></li>
+            <li><a href="${urls.contact}">Contato</a></li>
           </ul>
 
           <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="nav-cta btn btn-primary">
@@ -38,13 +59,13 @@ function loadSharedHeader() {
     </nav>
 
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
-      <a href="./index.html" onclick="closeMobileMenu()">Início</a>
-      <a href="./sobre.html" onclick="closeMobileMenu()">Sobre</a>
-      <a href="./iniciativas.html" onclick="closeMobileMenu()">Iniciativas</a>
-      <a href="./apoie-o-soul-surf.html" onclick="closeMobileMenu()">Apoie</a>
-      <a href="./index.html#gallery" onclick="closeMobileMenu()">Galeria</a>
-      <a href="./transparencia.html" onclick="closeMobileMenu()">Transparência</a>
-      <a href="./contato.html" onclick="closeMobileMenu()">Contato</a>
+      <a href="${urls.home}" onclick="closeMobileMenu()">Início</a>
+      <a href="${urls.about}" onclick="closeMobileMenu()">Sobre</a>
+      <a href="${urls.initiatives}" onclick="closeMobileMenu()">Iniciativas</a>
+      <a href="${urls.support}" onclick="closeMobileMenu()">Apoie</a>
+      <a href="${urls.gallery}" onclick="closeMobileMenu()">Galeria</a>
+      <a href="${urls.transparency}" onclick="closeMobileMenu()">Transparência</a>
+      <a href="${urls.contact}" onclick="closeMobileMenu()">Contato</a>
     </div>
   `;
 
@@ -58,9 +79,9 @@ function loadSharedFooter() {
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" style="display:inline-flex;align-items:center;gap:12px;color:#fff;" aria-label="Soul Surf — voltar ao início">
+            <a href="${urls.home}" style="display:inline-flex;align-items:center;gap:12px;color:#fff;" aria-label="Soul Surf — voltar ao início">
               <div class="nav-logo-icon" aria-hidden="true">
-                <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
+                <img src="${urls.logo}" alt="Crianças do Projeto Soul Surf" />
               </div>
               <div class="nav-logo-text">
                 <strong>Soul Surf</strong>
@@ -73,22 +94,22 @@ function loadSharedFooter() {
           <div class="footer-col">
             <h4>Projeto</h4>
             <ul>
-              <li><a href="./sobre.html">O Projeto</a></li>
-              <li><a href="./iniciativas.html">Iniciativas</a></li>
-              <li><a href="./apoie-o-soul-surf.html">Apoie o Soul Surf</a></li>
-              <li><a href="./index.html#gallery">Galeria</a></li>
-              <li><a href="./index.html#blog">Blog</a></li>
-              <li><a href="./sobre.html#mvv">Missão, Visão e Valores</a></li>
-              <li><a href="./index.html#water">Campanha Água</a></li>
+              <li><a href="${urls.about}">O Projeto</a></li>
+              <li><a href="${urls.initiatives}">Iniciativas</a></li>
+              <li><a href="${urls.support}">Apoie o Soul Surf</a></li>
+              <li><a href="${urls.gallery}">Galeria</a></li>
+              <li><a href="${urls.blog}">Blog</a></li>
+              <li><a href="${urls.mvv}">Missão, Visão e Valores</a></li>
+              <li><a href="${urls.water}">Campanha Água</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
             <h4>Transparência</h4>
             <ul>
-              <li><a href="transparencia.html">Portal</a></li>
-              <li><a href="transparencia.html">Relatórios</a></li>
-              <li><a href="./index.html#sponsors">Parceiros</a></li>
+              <li><a href="${urls.transparency}">Portal</a></li>
+              <li><a href="${urls.transparency}">Relatórios</a></li>
+              <li><a href="${urls.sponsors}">Parceiros</a></li>
             </ul>
           </div>
 
@@ -96,7 +117,7 @@ function loadSharedFooter() {
             <h4>Doe</h4>
             <ul>
               <li><a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Via Benfeitoria</a></li>
-              <li><a href="./apoie-o-soul-surf.html">Outras formas</a></li>
+              <li><a href="${urls.support}">Outras formas</a></li>
             </ul>
             <h4 style="margin-top: 28px;">Redes Sociais</h4>
             <div class="footer-social" style="margin-top: 12px;">
@@ -121,11 +142,11 @@ function loadSharedFooter() {
 
         <div class="footer-bottom">
           <div class="footer-legal">
-            <button onclick="openLegalModal('termos-de-uso.html', 'Termos de Uso')">Termos de Uso</button>
+            <button onclick="openLegalModal('${urls.terms}', 'Termos de Uso')">Termos de Uso</button>
             <span class="footer-legal-sep">·</span>
-            <button onclick="openLegalModal('politica-de-privacidade.html', 'Política de Privacidade')">Política de Privacidade</button>
+            <button onclick="openLegalModal('${urls.privacy}', 'Política de Privacidade')">Política de Privacidade</button>
             <span class="footer-legal-sep">·</span>
-            <button onclick="openLegalModal('politica-cookies.html', 'Política de Cookies')">Política de Cookies</button>
+            <button onclick="openLegalModal('${urls.cookies}', 'Política de Cookies')">Política de Cookies</button>
           </div>
           <p>© 2026 Projeto Soul Surf — Ass. de Surf Cibratel. Todos os direitos reservados.</p>
         </div>
