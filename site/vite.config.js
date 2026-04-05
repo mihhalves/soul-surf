@@ -10,8 +10,8 @@ function collectHtmlInputs(dir, baseDir = dir, inputs = {}) {
     const fullPath = path.join(dir, entry.name)
 
     if (entry.isDirectory()) {
-      // Skip build/dependency folders during entry discovery.
-      if (entry.name === 'dist' || entry.name === 'node_modules') continue
+      // Skip build/dependency/static-source folders during entry discovery.
+      if (entry.name === 'dist' || entry.name === 'node_modules' || entry.name === 'public' || entry.name === 'templates' || entry.name === 'pages') continue
       collectHtmlInputs(fullPath, baseDir, inputs)
       continue
     }
