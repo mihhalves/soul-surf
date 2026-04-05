@@ -11,10 +11,41 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/shared.css" />
-
   <style>
-    body { padding-top: 72px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Poppins', sans-serif; color: #333; background: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    :root {
+      --blue: #0073A8;
+      --blue-dark: #005a84;
+      --green: #4D917B;
+      --bg-light: #F7F9FB;
+      --bg-dark: #0a1628;
+      --bg-navy: #051223;
+      --border: #E6E6E6;
+      --text-light: #666666;
+      --sand: #f2ecde;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+    h1, h2, h3 { font-family: 'Glegoo', serif; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 14px 30px; border-radius: 50px;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px;
+      cursor: pointer; border: none; transition: all 0.3s ease;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,115,168,.35); }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid rgba(0,115,168,.45); }
+    .btn-outline:hover { background: rgba(0,115,168,.08); border-color: var(--blue); }
 
     #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -213,36 +244,24 @@
       font-weight: 500;
     }
 
-    .final-section {
-      background: linear-gradient(180deg, #f3f8fc 0%, #e8f1f9 100%);
-      padding-top: 72px;
-      padding-bottom: 96px;
-    }
-
     .final-cta {
       background:
-        radial-gradient(circle at 12% 18%, rgba(0,115,168,.28), transparent 45%),
-        radial-gradient(circle at 88% 80%, rgba(141,202,240,.22), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(0,115,168,.24), transparent 45%),
         var(--bg-navy);
       border-radius: 24px;
-      width: 100%;
-      margin: 0 auto;
-      padding: clamp(24px, 4vw, 44px);
+      padding: 38px;
       text-align: center;
       color: #fff;
       border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 22px 54px rgba(5,18,35,.25);
-      position: relative;
-      overflow: hidden;
     }
     .final-cta h2 {
-      font-size: clamp(34px, 4.8vw, 66px);
+      font-size: clamp(32px, 5vw, 58px);
       line-height: 1.14;
       margin-bottom: 12px;
     }
     .final-cta p {
       color: rgba(255,255,255,.74);
-      font-size: clamp(15px, 1.8vw, 20px);
+      font-size: 17px;
       line-height: 1.75;
       max-width: 760px;
       margin: 0 auto 20px;
@@ -252,26 +271,6 @@
       margin-bottom: 20px;
       font-weight: 700;
       letter-spacing: .05em;
-    }
-    .final-cta .btn {
-      min-width: 240px;
-      justify-content: center;
-    }
-    .final-meta {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .final-meta span {
-      border: 1px solid rgba(255,255,255,.2);
-      background: rgba(255,255,255,.07);
-      border-radius: 999px;
-      padding: 10px 14px;
-      color: rgba(255,255,255,.9);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .02em;
     }
 
     #footer { background: var(--bg-navy); border-top: 1px solid rgba(255,255,255,.06); padding: 64px 0 32px; }
@@ -305,24 +304,42 @@
       .final-cta .btn { width: 100%; justify-content: center; white-space: normal; }
       .institutional-row { grid-template-columns: 1fr; }
       .institutional-row span:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-      .final-cta {
-        border-radius: 18px;
-        padding: 26px 18px;
-      }
-      .final-meta { grid-template-columns: 1fr; }
+      .final-cta { padding: 28px 20px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .final-cta h2 { font-size: clamp(30px, 10vw, 44px); }
-      .final-tagline {
-        letter-spacing: 0;
-        font-size: 14px;
-      }
     }
   </style>
 </head>
 <body>
+  <nav id="navbar" role="navigation" aria-label="Navegação principal">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-logo" aria-label="Projeto Soul Surf — início">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
+          </div>
+          <div class="nav-logo-text">
+            <strong>Soul Surf</strong>
+            <span>Projeto Social</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="./index.html#about">O Projeto</a></li>
+          <li><a href="./index.html#projects">Iniciativas</a></li>
+          <li><a href="./index.html#gallery">Galeria</a></li>
+          <li><a href="./index.html#blog">Blog</a></li>
+          <li><a href="./apoie-o-soul-surf.html">Apoie</a></li>
+          <li><a href="./index.html#footer">Contato</a></li>
+        </ul>
+
+        <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Doe Agora
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
@@ -436,7 +453,7 @@
       </div>
     </section>
 
-    <section class="section-wrap final-section" aria-labelledby="cta-heading">
+    <section class="section-wrap alt" aria-labelledby="cta-heading">
       <div class="container">
         <div class="final-cta">
           <h2 id="cta-heading">Faça parte dessa transformação</h2>
@@ -445,16 +462,65 @@
           </p>
           <p class="final-tagline">Do morro para o mar. Do mar para a vida.</p>
           <a class="btn btn-primary" href="#passo-a-passo">Destinar Meu IR Agora</a>
-          <div class="final-meta" aria-label="Resumo rápido de confiança e impacto">
-            <span>Até 3% do IRPF no modelo completo</span>
-            <span>Processo legal e orientado passo a passo</span>
-            <span>Impacto direto em 200+ jovens atendidos</span>
-          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <script type="module" src="js/shared.js"></script>
+  <footer id="footer" aria-label="Rodapé">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html#hero" style="display:inline-flex;align-items:center;gap:12px;color:#fff;" aria-label="Soul Surf — voltar ao início">
+            <div class="nav-logo-icon" aria-hidden="true">
+              <img src="./fotos/491803886_10233882011684977_8940823745485622745_n.jpg" alt="Crianças do Projeto Soul Surf" />
+            </div>
+            <div class="nav-logo-text">
+              <strong>Soul Surf</strong>
+              <span>Do Mar Pra Vida</span>
+            </div>
+          </a>
+          <p>Projeto social que usa o surf como ferramenta de inclusão, educação e transformação de vidas em Itanhaém/SP desde 2021.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Projeto</h4>
+          <ul>
+            <li><a href="./index.html#about">O Projeto</a></li>
+            <li><a href="./index.html#projects">Iniciativas</a></li>
+            <li><a href="./index.html#gallery">Galeria</a></li>
+            <li><a href="./index.html#blog">Blog</a></li>
+            <li><a href="./apoie-o-soul-surf.html">Apoie o Soul Surf</a></li>
+            <li><a href="./index.html#footer">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Transparência</h4>
+          <ul>
+            <li><a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer">Portal</a></li>
+            <li><a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer">Relatórios</a></li>
+            <li><a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer">Parceiros</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Doe</h4>
+          <ul>
+            <li><a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer">Via Benfeitoria</a></li>
+            <li><a href="mailto:contato@projetosoulsurf.org">contato@projetosoulsurf.org</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Projeto Soul Surf — Ass. de Surf Cibratel. Todos os direitos reservados.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/projetosoulsurf/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Projeto Soul Surf">IG</a>
+          <a href="https://projetosoulsurf.org/" target="_blank" rel="noopener noreferrer" aria-label="Site oficial do Projeto Soul Surf">WEB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
