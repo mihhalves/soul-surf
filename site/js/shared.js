@@ -27,7 +27,7 @@ function loadSharedHeader() {
           </ul>
 
           <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="nav-cta btn btn-primary">
-            Doe Agora
+            Ajude a transformar vidas
           </a>
 
           <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
