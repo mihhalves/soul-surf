@@ -7,11 +7,13 @@
   <meta name="theme-color" content="#0073A8" />
   <title>Iniciativas — Projeto Soul Surf</title>
 
+  <link rel="icon" type="image/png" href="icons/Fav.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
   
-  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="./css/geral.css" />
   
   <style>
     body { padding-top: 72px; }
@@ -26,7 +28,7 @@
 
     .initiatives-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 40px; padding: 80px 0;
+      gap: 40px; padding: 40px 0;
     }
     
     .initiative-card {
@@ -40,9 +42,6 @@
       width: 100%; height: 280px; object-fit: cover;
       transition: transform .5s ease;
     }
-    .initiative-img.img-surf { object-position: center 38%; }
-    .initiative-img.img-digital { object-position: center 30%; }
-    .initiative-img.img-ambiental { object-position: center 42%; }
     .initiative-card:hover .initiative-img { transform: scale(1.05); }
     
     .initiative-content { padding: 32px; }
@@ -57,20 +56,101 @@
     .initiative-card p { color: var(--text-light); line-height: 1.7; margin-bottom: 24px; }
     
     .initiative-highlights {
-      background: var(--bg-light); padding: 16px;
-      border-radius: 12px; margin-top: 20px;
+      background: var(--bg-light); padding: 22px;
+      border-radius: 18px; margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
     }
     .highlight {
-      color: var(--text-light); font-size: 14px; margin: 8px 0;
-      padding-left: 20px; position: relative;
+      color: var(--bg-dark); font-size: 14px; margin: 12px 0;
+      padding: 14px 18px 14px 38px; position: relative;
+      background: #fff; border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.04);
     }
     .highlight::before {
-      content: "-"; position: absolute; left: 0;
-      color: var(--blue); font-weight: bold;
+      content: "✓"; position: absolute; left: 16px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--blue); font-weight: 800;
     }
 
+    .info-cloud {
+      position: relative;
+      background: rgba(0,115,168,.08);
+      border: 1px solid rgba(0,115,168,.18);
+      color: var(--bg-dark);
+      border-radius: 32px;
+      padding: 24px 28px;
+      margin: 32px auto 0;
+      max-width: 780px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.05);
+    }
+    .info-cloud::before {
+      content: "";
+      position: absolute;
+      left: 28px; bottom: -18px;
+      width: 30px; height: 30px;
+      background: rgba(0,115,168,.15);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255,255,255,.9);
+    }
+    .info-cloud p { font-size: 15px; line-height: 1.8; color: var(--text-light); }
+
+    .course-gallery {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px; margin-top: 40px;
+    }
+    .course-card {
+      background: #fff; border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: 0 14px 36px rgba(0,0,0,.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(0,0,0,.12); }
+    .course-card img { width: 100%; height: 220px; object-fit: cover; }
+    .course-card-body { padding: 22px; }
+    .course-card-body h4 { font-size: 20px; color: var(--bg-dark); margin-bottom: 10px; }
+    .course-card-body p { color: var(--text-light); font-size: 14px; line-height: 1.75; }
+    .course-caption {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 18px; color: var(--blue); font-weight: 700;
+      font-size: 13px; text-transform: uppercase;
+    }
+    .course-caption::before { content: "•"; color: var(--green); }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,18,35,.72);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 2000;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      width: min(540px, 100%);
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.18);
+      position: relative;
+    }
+    .modal h3 { font-size: 28px; color: var(--bg-dark); margin-bottom: 14px; }
+    .modal p { color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+    .modal a { color: var(--blue); font-weight: 700; }
+    .modal-close {
+      position: absolute; top: 18px; right: 18px;
+      background: transparent; border: none; color: var(--text-light);
+      font-size: 22px; cursor: pointer;
+    }
+    .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .modal-actions a { min-width: 160px; }
+
+    .btn-whatsapp { background: #25D366; color: #fff; border: 2px solid #25D366; }
+    .btn-whatsapp:hover { background: #1DA851; border-color: #1DA851; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6); }
+
     .cta-section {
-      padding: 80px 0; background: var(--bg-light); text-align: center;
+      padding: 40px 0; background: var(--bg-light); text-align: center;
     }
     .cta-section h2 { font-size: 42px; color: var(--bg-dark); margin-bottom: 22px; }
     .cta-section p { font-size: 18px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
@@ -80,7 +160,6 @@
       .page-hero { padding: 40px 0; }
       .page-hero h1 { font-size: 32px; }
       .initiatives-grid { grid-template-columns: 1fr; gap: 32px; }
-      .initiative-img { height: 240px; }
       .cta-section h2 { font-size: 28px; }
     }
   </style>
@@ -101,9 +180,9 @@
         <div class="initiatives-grid">
           <!-- Iniciativa 1: Do Morro Pro Mar -->
           <article class="initiative-card">
-            <img class="initiative-img img-surf" src="./fotos/IMG_4146.JPG" alt="Crianças praticando surf" loading="lazy" />
+            <img class="initiative-img" src="./fotos/IMG_4589.JPG" alt="Crianças praticando surf" loading="lazy" />
             <div class="initiative-content">
-              <span class="initiative-badge">Esporte</span>
+              <span class="initiative-badge">🏄 Esporte</span>
               <h3>Do Morro Pro Mar</h3>
               <p>
                 Nossa principal iniciativa de inclusão social através do surf. Levamos crianças e adolescentes de bairros distantes 
@@ -121,9 +200,9 @@
 
           <!-- Iniciativa 2: Soul Surf Digitais -->
           <article class="initiative-card">
-            <img class="initiative-img img-digital" src="./fotos/IMG_4656.JPG" alt="Aula de tecnologia" loading="lazy" />
+            <img class="initiative-img" src="./fotos/IMG_4561.JPG" alt="Aula de tecnologia" loading="lazy" />
             <div class="initiative-content">
-              <span class="initiative-badge">Educação Digital</span>
+              <span class="initiative-badge">💻 Educação Digital</span>
               <h3>Soul Surf Digitais</h3>
               <p>
                 Preparamos crianças e adolescentes para o futuro através da tecnologia. Oferecemos cursos de informática básica, 
@@ -141,9 +220,9 @@
 
           <!-- Iniciativa 3: Cultura e Meio Ambiente -->
           <article class="initiative-card">
-            <img class="initiative-img img-ambiental" src="./fotos/IMG_4654.JPG" alt="Ação ambiental na praia" loading="lazy" />
+            <img class="initiative-img" src="./fotos/Evento Soul Surf Voo-104.jpg" alt="Ação ambiental na praia" loading="lazy" />
             <div class="initiative-content">
-              <span class="initiative-badge">Meio Ambiente</span>
+              <span class="initiative-badge">🌊 Meio Ambiente</span>
               <h3>Cultura e Meio Ambiente</h3>
               <p>
                 Formação cidadã com ações culturais e consciência ambiental ligadas ao oceano. Nossos alunos aprendem a respeitar 
@@ -163,7 +242,7 @@
     </section>
 
     <!-- Impacto Detalhado -->
-    <section style="padding: 80px 0; background: var(--bg-light);">
+    <section style="padding: 40px 0; background: var(--bg-light);">
       <div class="container">
         <h2 style="font-size: 42px; color: var(--bg-dark); text-align: center; margin-bottom: 56px;">
           Como Medimos o Impacto
@@ -171,7 +250,7 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px;">
           <div style="background: #fff; padding: 32px; border-radius: 16px; text-align: center;">
-            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">01</div>
+            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">📊</div>
             <h4 style="color: var(--bg-dark); margin-bottom: 8px;">Avaliação Contínua</h4>
             <p style="color: var(--text-light); font-size: 14px;">
               Acompanhamos o desenvolvimento acadêmico, emocional e social de cada aluno mensalmente.
@@ -179,7 +258,7 @@
           </div>
 
           <div style="background: #fff; padding: 32px; border-radius: 16px; text-align: center;">
-            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">02</div>
+            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">👨‍👩‍👧‍👦</div>
             <h4 style="color: var(--bg-dark); margin-bottom: 8px;">Engajamento Familiar</h4>
             <p style="color: var(--text-light); font-size: 14px;">
               Mantemos diálogo constante com famílias para garantir o acompanhamento em casa.
@@ -187,7 +266,7 @@
           </div>
 
           <div style="background: #fff; padding: 32px; border-radius: 16px; text-align: center;">
-            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">03</div>
+            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">📈</div>
             <h4 style="color: var(--bg-dark); margin-bottom: 8px;">Indicadores de Sucesso</h4>
             <p style="color: var(--text-light); font-size: 14px;">
               Aumento na frequência escolar, melhoria nas notas e desenvolvimento de confiança.
@@ -195,7 +274,7 @@
           </div>
 
           <div style="background: #fff; padding: 32px; border-radius: 16px; text-align: center;">
-            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">04</div>
+            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">🎓</div>
             <h4 style="color: var(--bg-dark); margin-bottom: 8px;">Trajetória Pós-Projeto</h4>
             <p style="color: var(--text-light); font-size: 14px;">
               Apoiamos alunos na inclusão escolar, profissional e em suas próximas etapas da vida.
@@ -203,7 +282,7 @@
           </div>
 
           <div style="background: #fff; padding: 32px; border-radius: 16px; text-align: center;">
-            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">05</div>
+            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">🌟</div>
             <h4 style="color: var(--bg-dark); margin-bottom: 8px;">Histórias de Sucesso</h4>
             <p style="color: var(--text-light); font-size: 14px;">
               Documentamos e compartilhamos as transformações reais vividas pela comunidade.
@@ -211,7 +290,7 @@
           </div>
 
           <div style="background: #fff; padding: 32px; border-radius: 16px; text-align: center;">
-            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">06</div>
+            <div style="font-size: 42px; color: var(--blue); font-weight: 800; margin-bottom: 12px;">💪</div>
             <h4 style="color: var(--bg-dark); margin-bottom: 8px;">Desenvolvimento Integral</h4>
             <p style="color: var(--text-light); font-size: 14px;">
               Focamos em três dimensões: física, emocional e cognitiva de cada jovem.
@@ -221,23 +300,64 @@
       </div>
     </section>
 
+    <!-- Fotos dos Cursos -->
+    <section class="content-section" style="background:#fff;">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:42px;">
+          <h2>Fotos dos Cursos</h2>
+          <p style="max-width:720px; margin:0 auto; color:var(--text-light); font-size:16px; line-height:1.8;">
+            Um registro da nossa rotina de aulas, oficinas e atividades práticas que conectam jovens ao surf, à tecnologia e à preservação ambiental.
+          </p>
+        </div>
+        <div class="course-gallery">
+          <article class="course-card">
+            <img src="./fotos/IMG_4700.JPG" alt="Aula prática de surf com jovens no mar" loading="lazy" />
+            <div class="course-card-body">
+              <h4>Aulas de Surf</h4>
+              <p>Treinos no oceano que combinam esporte, disciplina e autoestima para crianças e adolescentes.</p>
+              <div class="course-caption">Surf e inclusão</div>
+            </div>
+          </article>
+          <article class="course-card">
+            <img src="./fotos/IMG_4561.JPG" alt="Aula de tecnologia e educação digital" loading="lazy" />
+            <div class="course-card-body">
+              <h4>Educação Digital</h4>
+              <p>Cursos de informática que oferecem ferramentas para o futuro acadêmico e profissional dos jovens.</p>
+              <div class="course-caption">Tecnologia e futuro</div>
+            </div>
+          </article>
+          <article class="course-card">
+            <img src="./fotos/Evento Soul Surf Voo-104.jpg" alt="Ação ambiental na praia com a equipe do projeto" loading="lazy" />
+            <div class="course-card-body">
+              <h4>Meio Ambiente</h4>
+              <p>Oficinas e atividades ao ar livre que mostram a importância da preservação das praias e oceanos.</p>
+              <div class="course-caption">Cultura e consciência</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Como Participar -->
-    <section style="padding: 80px 0; background: #fff;">
+    <section id="participar" style="padding: 40px 0; background: #fff;">
       <div class="container">
         <h2 style="font-size: 42px; color: var(--bg-dark); text-align: center; margin-bottom: 22px;">
           Como Participar
         </h2>
-        <p style="text-align: center; color: var(--text-light); max-width: 600px; margin: 0 auto 56px; font-size: 16px; line-height: 1.7;">
-          Interessado em ser voluntário, enviar doações ou inscrever um jovem? Entre em contato conosco!
+        <p style="text-align: center; color: var(--text-light); max-width: 600px; margin: 0 auto 28px; font-size: 16px; line-height: 1.7;">
+          Interessado em ser voluntário, enviar doações ou inscrever um jovem? Nossa equipe está pronta para receber sua mensagem.
         </p>
+        <div class="info-cloud">
+          <p>Para ser voluntário ou receber informações sobre inscrições, envie uma mensagem pelo WhatsApp ou email. No modal abaixo você encontra os canais oficiais do projeto.</p>
+        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-top: 32px;">
           <div style="background: var(--bg-light); padding: 32px; border-radius: 16px; text-align: center;">
             <h4 style="color: var(--bg-dark); margin-bottom: 12px; font-size: 20px;">Seja Voluntário</h4>
             <p style="color: var(--text-light); font-size: 14px; margin-bottom: 18px;">
               Compartilhe seu tempo e expertise com jovens do projeto.
             </p>
-            <a href="./vagas-em-aberto.html" class="btn btn-primary">Saiba Mais</a>
+            <button class="btn btn-primary" onclick="openContactModal('voluntário')">Saiba Mais</button>
           </div>
 
           <div style="background: var(--bg-light); padding: 32px; border-radius: 16px; text-align: center;">
@@ -245,7 +365,7 @@
             <p style="color: var(--text-light); font-size: 14px; margin-bottom: 18px;">
               Apoie financeiramente nossas iniciativas e transforme vidas.
             </p>
-            <a href="/apoie-o-soul-surf.html" class="btn btn-primary">Fazer Doação</a>
+            <a href="./doacao.html" class="btn btn-primary">Fazer Doação</a>
           </div>
 
           <div style="background: var(--bg-light); padding: 32px; border-radius: 16px; text-align: center;">
@@ -253,7 +373,7 @@
             <p style="color: var(--text-light); font-size: 14px; margin-bottom: 18px;">
               Conhece alguém que gostaria de participar? Nos indique!
             </p>
-            <a href="https://forms.gle/SEU-LINK-AQUI" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Indicar Alguém</a>
+            <button class="btn btn-primary" onclick="openContactModal('inscrição')">Indicar Alguém</button>
           </div>
         </div>
       </div>
@@ -264,13 +384,59 @@
       <div class="container">
         <h2>Quer Descobrir Mais Sobre Nossas Iniciativas?</h2>
         <p>Conheça histórias reais de transformação em nossa galeria</p>
-        <a href="/index.html#gallery" class="btn btn-primary" style="font-size: 17px; padding: 18px 44px;">
+        <a href="./index.html#gallery" class="btn btn-primary" style="font-size: 17px; padding: 18px 44px;">
           Ver Galeria
         </a>
       </div>
     </section>
   </main>
 
-  <script type="module" src="js/shared.js"></script>
+  <div class="modal-overlay" id="volunteerModalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="volunteerModalTitle">
+      <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Fechar">✕</button>
+      <h3 id="volunteerModalTitle">Como participar</h3>
+      <p id="volunteerModalDescription">Para ser voluntário ou indicar um jovem, entre em contato conosco via WhatsApp ou email. Nossa equipe responde o mais rápido possível.</p>
+      <div class="modal-actions">
+        <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send/?phone=5511930003945&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20como%20participar%20do%20Projeto%20Soul%20Surf." target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+        <a class="btn btn-outline" href="mailto:projetosoulsurf.contato@gmail.com">Enviar Email</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openContactModal(type) {
+      const overlay = document.getElementById('volunteerModalOverlay');
+      const title = document.getElementById('volunteerModalTitle');
+      const description = document.getElementById('volunteerModalDescription');
+
+      if (type === 'inscrição') {
+        title.textContent = 'Indicação de inscrição';
+        description.textContent = 'Para cadastrar um jovem no projeto, entre em contato pelo WhatsApp ou email e nossa equipe irá orientar todos os próximos passos.';
+      } else {
+        title.textContent = 'Seja voluntário';
+        description.textContent = 'Para se tornar voluntário, envie uma mensagem pelo WhatsApp ou email. Vamos te passar as vagas abertas e a melhor forma de ajudar.';
+      }
+
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeContactModal() {
+      const overlay = document.getElementById('volunteerModalOverlay');
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function (event) {
+      const overlay = document.getElementById('volunteerModalOverlay');
+      if (event.target === overlay) {
+        closeContactModal();
+      }
+    });
+  </script>
+
+  <script src="./js/geral.js"></script>
 </body>
 </html>

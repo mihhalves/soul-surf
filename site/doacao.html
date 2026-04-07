@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Apoie o Projeto Soul Surf — Formas de doação: Pix, boleto, transferência bancária e imposto de renda." />
+  <meta name="theme-color" content="#0073A8" />
+  <title data-i18n="support.page-title">Apoie o Soul Surf — Formas de Doação</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="./css/geral.css" />
+  
+  <style>
+    /* Seção Hero */
+    .page-hero {
+      padding: 132px 0 60px;
+      background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%);
+      position: relative; overflow: hidden;
+      color: #fff; text-align: center;
+    }
+    .page-hero h1 { font-size: clamp(42px, 6vw, 68px); margin-bottom: 18px; }
+    .page-hero p { font-size: 18px; opacity: .85; max-width: 600px; margin: 0 auto 28px; line-height: 1.6; }
+
+    /* Payment Methods Grid */
+    .payment-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin: 120px 0; }
+    .payment-card {
+      background: #fff; padding: 40px; border-radius: 20px;
+      border: 1px solid var(--border); transition: all .3s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .payment-card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+    .payment-icon { font-size: 48px; margin-bottom: 18px; }
+    .payment-card h3 { color: var(--bg-dark); margin-bottom: 12px; font-size: 24px; }
+    .payment-card p { color: var(--text-light); margin-bottom: 22px; line-height: 1.7; }
+    .payment-card .btn { width: 100%; text-align: center; justify-content: center; }
+
+    /* QR Code Section */
+    .qr-section {
+      background: var(--bg-light); padding: 60px 0;
+      text-align: center;
+    }
+    .qr-container { max-width: 400px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 16px; }
+    .qr-container img { max-width: 300px; height: auto; margin-bottom: 20px; }
+    .pix-key { 
+      background: rgba(0,115,168,.1); padding: 16px;
+      border-radius: 12px; font-family: monospace; font-size: 14px;
+      color: var(--blue); word-break: break-all;
+      margin: 20px 0; cursor: pointer; user-select: all;
+    }
+
+    /* IRPF Section */
+    .irpf-section {
+      padding: 100px 0; background: #fff;
+    }
+    .irpf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .irpf-text h2 { color: var(--bg-dark); margin-bottom: 22px; font-size: 42px; }
+    .irpf-text p { color: var(--text-light); margin-bottom: 16px; line-height: 1.8; font-size: 16px; }
+    .irpf-steps { margin: 40px 0; }
+    .step {
+      display: flex; gap: 20px; margin-bottom: 24px;
+      padding: 20px; background: var(--bg-light); border-radius: 12px;
+      border-left: 4px solid var(--blue);
+    }
+    .step-number {
+      min-width: 40px; width: 40px; height: 40px;
+      background: var(--blue); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 18px;
+    }
+    .irpf-img { position: relative; }
+    .irpf-img img { width: 100%; height: auto; border-radius: 12px; }
+
+    /* CTA Section */
+    .final-cta {
+      padding: 40px 0; background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%);
+      text-align: center; color: #fff; position: relative; overflow: hidden;
+    }
+    .final-cta h2 { font-size: 42px; margin-bottom: 18px; }
+    .final-cta p { font-size: 18px; opacity: .9; margin-bottom: 32px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-hero { padding: 100px 0 40px; }
+      .page-hero h1 { font-size: clamp(32px, 8vw, 48px); }
+      .irpf-grid { grid-template-columns: 1fr; gap: 40px; }
+      .payment-methods { grid-template-columns: 1fr; }
+      .final-cta h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 data-i18n="support.hero-title">Apoie o Soul Surf</h1>
+        <p data-i18n="support.hero-desc">Escolha a melhor forma para fazer sua doação e ajudar a transformar vidas de crianças e adolescentes em Itanhaém/SP</p>
+      </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section style="padding: 40px 0;">
+      <div class="container">
+        <h2 style="text-align: center; font-size: 36px; color: var(--bg-dark); margin-bottom: 56px;" data-i18n="support.donations-title">
+          Formas de Doação
+        </h2>
+
+        <div class="payment-methods">
+          <!-- PIX -->
+          <div class="payment-card">
+            <div class="payment-icon">💳</div>
+            <h3 data-i18n="support.pix-title">Doação via Pix</h3>
+            <p data-i18n="support.pix-desc">A forma mais rápida e prática. Use nosso QR Code ou chave Pix para fazer sua doação imediatamente.</p>
+            <a href="#pix-section" class="btn btn-primary" data-i18n="support.pix-link">Ver QR Code</a>
+          </div>
+
+          <!-- Benfeitoria -->
+          <div class="payment-card">
+            <div class="payment-icon">🌐</div>
+            <h3 data-i18n="support.benfeitoria-title">Via Benfeitoria</h3>
+            <p data-i18n="support.benfeitoria-desc">Plataforma segura de crowdfunding social. Fazer doações recorrentes e acompanhar o impacto do seu aporte.</p>
+            <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="support.benfeitoria-link">Ir para Benfeitoria</a>
+          </div>
+
+          <!-- Transferência Bancária -->
+          <div class="payment-card">
+            <div class="payment-icon">🏦</div>
+            <h3 data-i18n="support.bank-title">Transferência Bancária</h3>
+            <p data-i18n="support.bank-desc">Faça uma transferência direta para nossa conta bancária. Disponível em qualquer banco.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('banco-details').scrollIntoView({behavior: 'smooth'})" data-i18n="support.bank-link">Ver Dados Bancários</button>
+          </div>
+
+          <!-- Imposto de Renda -->
+          <div class="payment-card">
+            <div class="payment-icon">📋</div>
+            <h3 data-i18n="support.irpf-title">Desconto Imposto de Renda</h3>
+            <p data-i18n="support.irpf-desc">Sua doação pode ser abatida no seu Imposto de Renda. Somos uma organização sem fins lucrativos certificada.</p>
+            <a href="#irpf-section" class="btn btn-primary" data-i18n="support.irpf-link">Saiba Como</a>
+          </div>
+
+          <!-- Doações Recorrentes -->
+          <div class="payment-card">
+            <div class="payment-icon">💚</div>
+            <h3 data-i18n="support.monthly-title">Doação Mensal</h3>
+            <p data-i18n="support.monthly-desc">Contribua mensalmente e faça parte de nossa comunidade de apoiadores permanentes do projeto.</p>
+            <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="support.monthly-link">Configurar Recorrência</a>
+          </div>
+
+          <!-- Doação em Espécie -->
+          <div class="payment-card">
+            <div class="payment-icon">🤝</div>
+            <h3 data-i18n="support.kind-title">Doação em Espécie</h3>
+            <p data-i18n="support.kind-desc">Pode ser uma prancha, equipamento de proteção, alimentos ou materiais escolares. Todos ajudam!</p>
+            <button class="btn btn-primary" onclick="alert('Entre em contato conosco para coordenar as doações em espécie.')" data-i18n="support.kind-link">Entrar em Contato</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QR Code / Pix Section -->
+    <section id="pix-section" class="qr-section">
+      <div class="container">
+        <h2 style="font-size: 36px; color: var(--bg-dark); margin-bottom: 12px;" data-i18n="support.pix-section-title">Pague com Pix</h2>
+        <p style="color: var(--text-light); font-size: 16px; margin-bottom: 40px;" data-i18n="support.pix-section-desc">
+          Escaneie o QR Code abaixo ou copie a chave Pix para realizar sua doação
+        </p>
+        
+        <div class="qr-container">
+          <h3 style="margin-bottom: 20px;" data-i18n="support.qr-title">QR Code Pix</h3>
+          <img src="/fotos/qr-code-placeholder.jpg" alt="QR Code Pix Soul Surf" />
+          <p style="color: var(--text-light); margin-bottom: 16px;" data-i18n="support.qr-scan">
+            Pressione a câmera do seu telefone para escanear
+          </p>
+          
+          <div style="border-top: 1px solid var(--border); padding-top: 20px;">
+            <h4 style="margin-bottom: 12px;" data-i18n="support.pix-key">Chave Pix:</h4>
+            <div class="pix-key" onclick="copyToClipboard(this)">
+              seu-pix-aqui@soulsurf
+            </div>
+            <small style="color: var(--text-light);" data-i18n="support.pix-copy">Clique para copiar a chave</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dados Bancários -->
+    <section id="banco-details" style="padding: 40px 0; background: var(--bg-light);">
+      <div class="container">
+        <h2 style="font-size: 36px; color: var(--bg-dark); margin-bottom: 40px; text-align: center;" data-i18n="support.bank-details-title">
+          Dados Bancários
+        </h2>
+        
+        <div style="max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 16px; border: 1px solid var(--border);">
+          <div style="margin-bottom: 20px;">
+            <strong data-i18n="support.bank-name">Banco:</strong> Bradesco<br>
+            <span style="color: var(--text-light);">Adicione os dados corretos aqui</span>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <strong data-i18n="support.bank-agency">Agência:</strong><br>
+            <span style="color: var(--text-light);">Adicione os dados corretos aqui</span>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <strong data-i18n="support.bank-account">Conta:</strong><br>
+            <span style="color: var(--text-light);">Adicione os dados corretos aqui</span>
+          </div>
+          <div>
+            <strong data-i18n="support.bank-holder">Titular:</strong> Associação de Surf Cibratel<br>
+            <span style="color: var(--text-light);">CNPJ: Adicione o CNPJ aqui</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IRPF Section -->
+    <section id="irpf-section" class="irpf-section">
+      <div class="container">
+        <div class="irpf-grid">
+          <div class="irpf-text">
+            <h2 data-i18n="support.irpf-h2">Abata sua Doação no Imposto de Renda</h2>
+            <p data-i18n="support.irpf-p">
+              O Projeto Soul Surf é uma organização sem fins lucrativos registrada e certificada. Suas doações podem ser deduzidas do seu Imposto de Renda como despesa com atividades filantrópicas.
+            </p>
+            
+            <div class="irpf-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                  <strong data-i18n="support.irpf-step-1-title">Faça sua doação</strong><br>
+                  <span style="color: var(--text-light); font-size: 14px;" data-i18n="support.irpf-step-1-desc">Por qualquer forma: Pix, transferência, boleto ou Benfeitoria</span>
+                </div>
+              </div>
+              
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                  <strong data-i18n="support.irpf-step-2-title">Solicite o Recibo</strong><br>
+                  <span style="color: var(--text-light); font-size: 14px;" data-i18n="support.irpf-step-2-desc">Envie email com comprovante de doação para receber recibo oficial</span>
+                </div>
+              </div>
+              
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                  <strong data-i18n="support.irpf-step-3-title">Declare no IRPF</strong><br>
+                  <span style="color: var(--text-light); font-size: 14px;" data-i18n="support.irpf-step-3-desc">Informe a doação na DAFF (Doação para Atividades Filantrópicas)</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="#irpf-detalhado" class="btn btn-primary" style="font-size: 16px; padding: 16px 32px;">
+              Passo a Passo Completo →
+            </a>
+          </div>
+
+          <div class="irpf-img">
+            <img src="/fotos/irpf-guide.jpg" alt="Guia IRPF" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IRPF Detalhado -->
+    <section id="irpf-detalhado" style="padding: 100px 0; background: #f9fbfd;">
+      <div class="container">
+        <h2 style="text-align: center; font-size: 42px; color: var(--bg-dark); margin-bottom: 12px;">Destinação de Imposto de Renda (IRPF)</h2>
+        <p style="text-align: center; color: var(--text-light); font-size: 17px; max-width: 700px; margin: 0 auto 56px; line-height: 1.7;">
+          Você pode direcionar até <strong>3% do seu imposto de renda</strong> para projetos sociais. Saiba como fazer isso de forma rápida e segura.
+        </p>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+          <h3 style="font-size: 24px; color: var(--bg-dark); margin-bottom: 32px;">Passo a Passo</h3>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">1</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Preencha sua declaração no <strong>modelo completo</strong></p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">2</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">No programa, acesse <strong>"Doações Diretamente"</strong></p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">3</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Escolha o Fundo Municipal dos Direitos da Criança</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">4</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Informe o município correspondente</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">5</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Sistema calcula automaticamente o limite legal</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">6</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Informe o valor que deseja destinar</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">7</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Gere o DARF para impressão</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+              <div style="width: 40px; height: 40px; background: var(--blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 12px;">8</div>
+              <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">Realize o pagamento no prazo da declaração</p>
+            </div>
+          </div>
+
+          <div style="background: #fff; padding: 28px; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 32px;">
+            <h4 style="color: var(--bg-dark); margin-bottom: 14px;">Dados do Projeto Soul Surf</h4>
+            <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px;"><strong>CNPJ:</strong> 44.172.734/0001-23</p>
+            <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px;"><strong>Razão Social:</strong> Associação de Surf Cibratel</p>
+            <p style="color: var(--text-light); font-size: 14px;"><strong>Nome:</strong> Projeto Social Soul Surf</p>
+          </div>
+
+          <div style="background: rgba(245, 166, 35, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #F5A623;">
+            <p style="color: #6b4a12; font-size: 14px; margin: 0;"><strong>Após o pagamento:</strong> Envie o comprovante do DARF (com número de protocolo) e seus dados para que possamos vincular sua destinação corretamente ao projeto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>Cada Doação Faz Diferença</h2>
+        <p>Ajude-nos a transformar vidas através do surf e da educação</p>
+        <a href="https://benfeitoria.com/projeto/projeto-social-soul-surf-10zy" target="_blank" rel="noopener noreferrer" class="btn btn-white" style="font-size: 17px; padding: 18px 44px;">
+          Doe Agora
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/geral.js"></script>
+  <script>
+    function copyToClipboard(element) {
+      const text = element.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = element.textContent;
+        element.textContent = '✓ Copiado!';
+        setTimeout(() => {
+          element.textContent = original;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -6,27 +6,25 @@
   <meta name="description" content="Conheça a Associação de Surf Cibratel — Projeto Social Soul Surf. Nossa missão, visão, valores e história desde 2021." />
   <meta name="theme-color" content="#0073A8" />
   <title>Sobre o Projeto Soul Surf</title>
-
+  <link rel="icon" type="image/png" href="icons/Fav.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
   
-  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="./css/geral.css" />
   
   <style>
     body { padding-top: 72px; }
 
     .page-hero {
       padding: 60px 0;
-      background:
-        linear-gradient(135deg, rgba(0, 115, 168, .82) 0%, rgba(0, 78, 116, .82) 100%),
-        url('./fotos/IMG_4165.JPG') center/cover no-repeat;
+      background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%);
       color: #fff; text-align: center;
     }
     .page-hero h1 { font-size: clamp(42px, 6vw, 68px); margin-bottom: 18px; }
     .page-hero p { font-size: 18px; opacity: .9; max-width: 700px; margin: 0 auto; line-height: 1.7; }
 
-    .content-section { padding: 80px 0; }
+    .content-section { padding: 40px 0; }
     .content-section h2 { font-size: 42px; color: var(--bg-dark); margin-bottom: 28px; }
     .content-section p { color: var(--text-light); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
 
@@ -98,24 +96,24 @@
     <!-- Hero -->
     <section class="page-hero">
       <div class="container">
-        <h1>Sobre o Soul Surf</h1>
-        <p>Conheça a história, valores e missão da Associação de Surf Cibratel — Projeto Social Soul Surf</p>
+        <h1 data-i18n="about.page-title">Sobre o Soul Surf</h1>
+        <p data-i18n="about.page-desc">Conheça a história, valores e missão da Associação de Surf Cibratel — Projeto Social Soul Surf</p>
       </div>
     </section>
 
     <!-- Nossa História -->
     <section class="content-section" style="background: #fff;">
       <div class="container">
-        <h2>Nossa História</h2>
-        <p>
+        <h2 data-i18n="about.history-title">Nossa História</h2>
+        <p data-i18n="about.history-intro">
           Fundada em setembro de 2021 em Itanhaém/SP, a <strong>Associação de Surf Cibratel – Projeto Social Soul Surf</strong> 
           nasceu do sonho de transformar vidas de crianças e adolescentes em situação de vulnerabilidade através do surf.
         </p>
-        <p>
+        <p data-i18n="about.history-growth">
           O projeto começou pequeno, com voluntários apaixonados pelo esporte e pela causa social. Hoje, atendemos mais de 200 jovens, 
           oferecendo não apenas aulas de surf, mas educação integral, tecnologia digital e consciência ambiental.
         </p>
-        <p>
+        <p data-i18n="about.history-belief">
           Acreditamos que o oceano é mais que um espaço de lazer — é uma escola de vida que ensina respeito, coragem e superação.
         </p>
 
@@ -123,32 +121,40 @@
           <div class="timeline-item">
             <div class="timeline-year">2021</div>
             <div class="timeline-content">
-              <h3>Fundação do Projeto</h3>
-              <p>Lançamento oficial do Projeto Social Soul Surf com as primeiras aulas de surf em Itanhaém/SP, atendendo famílias em situação de vulnerabilidade.</p>
+              <h3 data-i18n="about.timeline-2021-title">Fundação do Projeto</h3>
+              <p data-i18n="about.timeline-2021-desc">Lançamento oficial do Projeto Social Soul Surf com as primeiras aulas de surf em Itanhaém/SP, atendendo famílias em situação de vulnerabilidade.</p>
             </div>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-year">2022</div>
             <div class="timeline-content">
-              <h3>Expansão das Atividades</h3>
-              <p>Início do programa de educação e reforço escolar. Ampliação do número de aulas e consolidação da equipe de voluntários.</p>
+              <h3 data-i18n="about.timeline-2022-title">Expansão das Atividades</h3>
+              <p data-i18n="about.timeline-2022-desc">Início do programa de educação e reforço escolar. Ampliação do número de aulas e consolidação da equipe de voluntários.</p>
             </div>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-year">2023</div>
             <div class="timeline-content">
-              <h3>Soul Surf Digitais</h3>
-              <p>Lançamento da iniciativa de tecnologia digital, preparando jovens para o mercado de trabalho com cursos de informática e programação.</p>
+              <h3 data-i18n="about.timeline-2023-title">Soul Surf Digitais</h3>
+              <p data-i18n="about.timeline-2023-desc">Lançamento da iniciativa de tecnologia digital, preparando jovens para o mercado de trabalho com cursos de informática e programação.</p>
             </div>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-year">2024</div>
             <div class="timeline-content">
-              <h3>Campanha de Infraestrutura</h3>
-              <p>Campanha por água doce e estrutura física. Crescimento para 200+ jovens atendidos e consolidação de 3 frentes de atuação.</p>
+              <h3 data-i18n="about.timeline-2024-title">Campanha de Infraestrutura</h3>
+              <p data-i18n="about.timeline-2024-desc">Campanha por água doce e estrutura física. Crescimento para 200+ jovens atendidos e consolidação de 3 frentes de atuação.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+              <h3 data-i18n="about.timeline-2025-title">Expansão do Impacto</h3>
+              <p data-i18n="about.timeline-2025-desc">Consolidação das iniciativas e expansão dos programas de educação digital e ambiental. Fortalecimento da comunidade e novas parcerias estratégicas.</p>
             </div>
           </div>
         </div>
@@ -156,30 +162,30 @@
     </section>
 
     <!-- Missão, Visão, Valores -->
-    <section id="mvv" class="content-section" style="background: var(--bg-light);">
+    <section class="content-section" style="background: var(--bg-light);">
       <div class="container">
-        <h2 style="text-align: center; margin-bottom: 56px;">Missão, Visão e Valores</h2>
+        <h2 style="text-align: center; margin-bottom: 56px;" data-i18n="about.mvv-title">Missão, Visão e Valores</h2>
 
         <div class="values-grid">
           <div class="value-card" style="border-left-color: var(--blue);">
-            <h3>Missão</h3>
-            <p>
+            <h3 data-i18n="about.mission-label">🎯 Missão</h3>
+            <p data-i18n="about.mission-text">
               Promover a inclusão social de crianças e adolescentes em vulnerabilidade — física, emocional, cognitiva ou social — 
               por meio de projetos educacionais, esportivos, culturais e ambientais vinculados ao surf.
             </p>
           </div>
 
           <div class="value-card" style="border-left-color: var(--green);">
-            <h3>Visão</h3>
-            <p>
+            <h3 data-i18n="about.vision-label">🌊 Visão</h3>
+            <p data-i18n="about.vision-text">
               Fortalecer a crença na superação e na capacidade humana de vencer os desafios mais inesperados — assim como o surfista 
               enfrenta cada onda com coragem e confiança.
             </p>
           </div>
 
           <div class="value-card" style="border-left-color: var(--gold);">
-            <h3>Valores</h3>
-            <p>
+            <h3 data-i18n="about.values-label">⭐ Valores</h3>
+            <p data-i18n="about.values-text">
               <strong>Respeito · Fraternidade · Solidariedade</strong><br><br>
               Empatia, autoestima, autoconfiança e fortalecimento dos vínculos familiares. Esses são os pilares que guiam cada aula, 
               cada ação e cada sorriso.
@@ -192,24 +198,24 @@
     <!-- Números de Impacto -->
     <section class="content-section" style="background: #fff;">
       <div class="container">
-        <h2 style="text-align: center; margin-bottom: 56px;">Números que Falam</h2>
+        <h2 style="text-align: center; margin-bottom: 56px;" data-i18n="about.stats-title">Números que Falam</h2>
 
         <div class="impact-stats">
           <div class="stat-card">
             <div class="stat-number">200+</div>
-            <div class="stat-label">Jovens Impactados</div>
+            <div class="stat-label" data-i18n="about.stat-1">Jovens Impactados</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">4+</div>
-            <div class="stat-label">Anos de Atuação</div>
+            <div class="stat-label" data-i18n="about.stat-2">Anos de Atuação</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">3</div>
-            <div class="stat-label">Frentes de Atuação</div>
+            <div class="stat-label" data-i18n="about.stat-3">Frentes de Atuação</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">100%</div>
-            <div class="stat-label">Impacto Social Real</div>
+            <div class="stat-label" data-i18n="about.stat-4">Impacto Social Real</div>
           </div>
         </div>
       </div>
@@ -218,43 +224,30 @@
     <!-- Equipe de Liderança -->
     <section class="content-section" style="background: var(--bg-light);">
       <div class="container">
-        <h2 style="text-align: center; margin-bottom: 56px;">Nossa Equipe</h2>
-        <p style="text-align: center; color: var(--text-light); margin-bottom: 48px;">
+        <h2 style="text-align: center; margin-bottom: 56px;" data-i18n="about.team-title">Nossa Equipe</h2>
+        <p style="text-align: center; color: var(--text-light); margin-bottom: 48px;" data-i18n="about.team-desc">
           Conheça as pessoas apaixonadas que fazem o Soul Surf acontecer todo dia.
         </p>
 
         <!-- Adicionar foto e dados dos membros conforme disponível -->
-        <p style="text-align: center; color: var(--text-light); padding: 40px; background: #fff; border-radius: 12px;">
+        <p style="text-align: center; color: var(--text-light); padding: 40px; background: #fff; border-radius: 12px;" data-i18n="about.team-coming">
           Galeria da equipe em construção. Breve teremos as fotos e histórias de todos os membros e voluntários!
         </p>
       </div>
     </section>
 
-    <!-- Parcerias -->
-    <section class="content-section" style="background: #fff;">
-      <div class="container">
-        <h2 style="text-align: center;">Nossos Parceiros</h2>
-        <p style="text-align: center; color: var(--text-light); margin-bottom: 48px;">
-          Organizações e empresas que acreditam no nosso propósito.
-        </p>
-        <p style="text-align: center; color: var(--text-light); padding: 40px; background: var(--bg-light); border-radius: 12px;">
-          Logos de parceiros em breve!
-        </p>
-      </div>
-    </section>
-
     <!-- CTA Final -->
-    <section style="padding: 80px 0; background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%); color: #fff; text-align: center;">
+    <section style="padding: 40px 0; background: linear-gradient(135deg, var(--blue) 0%, #004e74 100%); color: #fff; text-align: center;">
       <div class="container">
-        <h2 style="font-size: 42px; margin-bottom: 18px;">Faça Parte dessa Transformação</h2>
-        <p style="font-size: 18px; opacity: .9; margin-bottom: 32px;">Apoie o Soul Surf e ajude a mudar vidas.</p>
-        <a href="./vagas-em-aberto.html" class="btn btn-primary" style="font-size: 17px; padding: 18px 44px;">
+        <h2 style="font-size: 42px; margin-bottom: 18px;" data-i18n="about.cta-title">Faça Parte dessa Transformação</h2>
+        <p style="font-size: 18px; opacity: .9; margin-bottom: 32px;" data-i18n="about.cta-desc">Apoie o Soul Surf e ajude a mudar vidas.</p>
+        <a href="./doacao.html" class="btn btn-primary" style="font-size: 17px; padding: 18px 44px;" data-i18n="about.cta-button">
           Apoie Agora
         </a>
       </div>
     </section>
   </main>
 
-  <script type="module" src="js/shared.js"></script>
+  <script src="./js/geral.js"></script>
 </body>
 </html>
