@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/geral.css" />
 
@@ -102,7 +102,7 @@
     }
     .stat-item:last-child { border-right: none; }
     .stat-number {
-      font-family: 'Glegoo', serif;
+      font-family: 'Amika Black', 'Amiko', sans-serif;
       font-size: clamp(42px, 5vw, 68px); font-weight: 700;
       color: #fff; line-height: 1; margin-bottom: 10px;
     }
@@ -132,6 +132,15 @@
 
     /* ========== SECTION HEADER ========== */
     .section-header { margin-bottom: 56px; }
+    .section-label {
+      display: inline-block;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
     .section-header h2 { font-size: clamp(28px, 3.8vw, 46px); color: var(--bg-dark); line-height: 1.2; margin-bottom: 14px; }
     .section-header p { font-size: 17px; color: var(--text-light); line-height: 1.7; max-width: 600px; }
 
@@ -449,35 +458,67 @@
       .testimonial-card { flex: 0 0 calc(50% - 12px); max-width: calc(50% - 12px); }
     }
     @media (max-width: 768px) {
-      .testimonials-track { flex-direction: column; }
       .testimonial-card { flex: 0 0 100%; max-width: 100%; min-height: auto; padding: 24px; }
       .testimonial-text-item { font-size: 14px; padding: 18px 24px; }
     }
 
-    /* ========== CARROSSEL PARCEIROS ========== */
-    #partners { padding: 40px 0; background: var(--white); }
-    .partners-carousel { width: 100%; }
-    .partners-track {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    }
-    .partner-card {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 24px; border-radius: 16px; background: rgba(0, 115, 168, 0.04);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .partner-card:hover { background: rgba(0, 115, 168, 0.08); transform: translateY(-4px); }
-    .partner-logo { width: 120px; height: 80px; object-fit: contain; margin: 0 auto 16px; filter: grayscale(100%); transition: filter 0.3s; }
-    .partner-logo:hover { filter: grayscale(0); }
-    .partner-name { font-size: 18px; font-weight: 600; color: var(--dark); margin: 8px 0 4px; }
-    .partner-desc { font-size: 14px; color: var(--gainsboro); margin: 0 0 12px; }
-    .partner-link { display: inline-block; font-size: 14px; color: var(--blue); font-weight: 500; text-decoration: none; transition: color 0.3s; }
-    .partner-link:hover { color: var(--blue-dark, #0052a3); text-decoration: underline; }
-    @media (max-width: 1024px) {
-      .partners-track { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .partners-track { grid-template-columns: 1fr; }
-    }
+/* ========== SPONSORS / PATROCINADORES ========== */
+#sponsors { padding: 40px 0; background: var(--white); }
+.sponsors-carousel { width: 100%; }
+.sponsors-track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+  align-items: stretch;
+  animation: sponsorsMarquee 24s linear infinite;
+  will-change: transform;
+}
+.sponsors-track.paused { animation-play-state: paused; }
+@keyframes sponsorsMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 12px)); }
+}
+.sponsor-group {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+.sponsor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(0, 115, 168, 0.04);
+  transition: background 0.3s, transform 0.3s;
+  flex: 0 0 220px;
+}
+.sponsor-item:hover { background: rgba(0, 115, 168, 0.08); transform: translateY(-4px); }
+.sponsor-item img {
+  width: 140px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto;
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition: filter 0.3s, transform 0.3s;
+}
+.sponsor-item:hover img,
+.sponsor-item.is-active img { filter: grayscale(0); }
+.sponsor-item:hover img { transform: scale(1.08); }
+.sponsor-item.is-active img { transform: scale(1); }
+
+@media (max-width: 1200px) {
+  .sponsor-item { flex-basis: 200px; }
+}
+@media (max-width: 1024px) {
+  .sponsor-item { flex-basis: 180px; }
+}
+@media (max-width: 768px) {
+  .sponsor-item { flex-basis: 160px; padding: 18px; }
+}
 
     /* ========== FAQ ========== */
     #faq { padding: 60px 0; background: var(--bg-light); }
@@ -1008,68 +1049,33 @@
   </section>
 
   <!-- ===== PARCEIROS ===== -->
-  <section id="partners" aria-labelledby="partners-heading">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Parceiros</span>
-        <h2 id="partners-heading">Quem apoia nossa missão</h2>
-        <p>Instituições e empresas que acreditam no poder transformador do surf.</p>
-      </div>
+  <section id="sponsors" aria-labelledby="sponsors-heading">
+  <div class="container">
+    <div class="section-header sponsors-header">
+      <span class="section-label">Patrocinadores</span>
+      <h2 id="sponsors-heading">Empresas que fortalecem essa onda</h2>
+      <p>Marcas e instituições que acreditam no impacto social do Soul Surf e ajudam a ampliar nosso alcance.</p>
+    </div>
 
-      <div class="partners-carousel">
-        <div class="partners-track">
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_100.png" alt="Parceiro 1" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 1</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 1">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_101.png" alt="Parceiro 2" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 2</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 2">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_102.png" alt="Parceiro 3" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 3</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 3">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_103.png" alt="Parceiro 4" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 4</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 4">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_104.png" alt="Parceiro 5" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 5</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 5">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_105.png" alt="Parceiro 6" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 6</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 6">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_106.png" alt="Parceiro 7" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 7</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 7">Visitar</a>
-          </div>
-          <div class="partner-card">
-            <img class="partner-logo" src="./fotos/SS_107.png" alt="Parceiro 8" loading="lazy" />
-            <h3 class="partner-name">Nome do Parceiro 8</h3>
-            <p class="partner-desc">Descrição/atuação do parceiro</p>
-            <a href="#" class="partner-link" target="_blank" aria-label="Perfil/Site do Parceiro 8">Visitar</a>
-          </div>
+    <div class="sponsors-carousel" aria-label="Carrossel de patrocinadores do Soul Surf">
+      <div class="sponsors-track" id="sponsorsTrack">
+        <div class="sponsor-group">
+          <div class="sponsor-item"><img src="./icons-parceiros/GS.jpg" alt="GS" loading="lazy"></div>
+          <div class="sponsor-item"><img src="./icons-parceiros/OGGI.jpg" alt="OGGI" loading="lazy"></div>
+          <div class="sponsor-item"><img src="./icons-parceiros/PG.jpg" alt="PG" loading="lazy"></div>
+          <div class="sponsor-item"><img src="./icons-parceiros/SURFSUP.jpg" alt="SURFSUP" loading="lazy"></div>
+        </div>
+        <div class="sponsor-group" aria-hidden="true">
+          <div class="sponsor-item"><img src="./icons-parceiros/GS.jpg" alt="" loading="lazy"></div>
+          <div class="sponsor-item"><img src="./icons-parceiros/OGGI.jpg" alt="" loading="lazy"></div>
+          <div class="sponsor-item"><img src="./icons-parceiros/PG.jpg" alt="" loading="lazy"></div>
+          <div class="sponsor-item"><img src="./icons-parceiros/SURFSUP.jpg" alt="" loading="lazy"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ===== FAQ ===== -->
   <section id="faq" aria-labelledby="faq-heading">
@@ -1319,24 +1325,49 @@
     carouselSlides.style.transform = `translateX(-${currentSlide * 25}%)`;
   }, 5000); // Muda a cada 5 segundos
 
-  // --- Depoimentos slider ---
+  // --- Carrossel Patrocinadores ---
+  const sponsorsTrack = document.getElementById('sponsorsTrack');
+  document.querySelectorAll('#sponsors .sponsor-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      if (sponsorsTrack) sponsorsTrack.classList.add('paused');
+      item.classList.add('is-active');
+    });
+    item.addEventListener('mouseleave', () => {
+      if (sponsorsTrack) sponsorsTrack.classList.remove('paused');
+      item.classList.add('is-active');
+    });
+  });
+
+  // --- Depoimentos slider sem corte ---
   const testimonialTrack = document.querySelector('.testimonials-track');
-  const testimonialCards = document.querySelectorAll('.testimonials-track .testimonial-card');
-  let testimonialIndex = 0;
-  const testimonialStep = 2;
+  const testimonialCarousel = document.querySelector('.testimonials-carousel');
+  const testimonialCards = Array.from(document.querySelectorAll('.testimonials-track .testimonial-card'));
+  let testimonialStartIndex = 0;
+
+  const getCardsPerView = () => {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  };
 
   const updateTestimonialSlide = () => {
-    if (!testimonialTrack || testimonialCards.length === 0) return;
-    const offset = testimonialIndex * 50;
-    testimonialTrack.style.transform = `translateX(-${offset}%)`;
+    if (!testimonialTrack || testimonialCards.length === 0 || !testimonialCarousel) return;
+    const maxStart = Math.max(0, testimonialCards.length - getCardsPerView());
+    if (testimonialStartIndex > maxStart) testimonialStartIndex = 0;
+    const targetCard = testimonialCards[testimonialStartIndex];
+    testimonialTrack.style.transform = `translateX(-${targetCard.offsetLeft}px)`;
   };
 
   setInterval(() => {
-    if (testimonialCards.length === 0) return;
-    const maxIndex = Math.ceil(testimonialCards.length / testimonialStep) - 1;
-    testimonialIndex = testimonialIndex >= maxIndex ? 0 : testimonialIndex + 1;
+    if (!testimonialTrack || testimonialCards.length === 0) return;
+    const cardsPerView = getCardsPerView();
+    const maxStart = Math.max(0, testimonialCards.length - cardsPerView);
+    testimonialStartIndex = testimonialStartIndex >= maxStart ? 0 : testimonialStartIndex + 1;
     updateTestimonialSlide();
   }, 9000);
+
+  window.addEventListener('resize', updateTestimonialSlide);
+  window.addEventListener('load', updateTestimonialSlide);
 
   // --- Accordion FAQ ---
   document.querySelectorAll('.faq-question').forEach(button => {

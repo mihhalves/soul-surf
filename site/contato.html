@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/geral.css" />
 
@@ -56,7 +56,7 @@
       padding: 14px 16px;
       border: 2px solid var(--border);
       border-radius: 8px;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Amika Black', 'Amiko', sans-serif;
       font-size: 16px;
       transition: border-color .3s;
     }
@@ -108,6 +108,22 @@
       font-weight: 500;
     }
     .info-content a:hover { text-decoration: underline; }
+    .map-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .map-buttons .btn {
+      min-width: 170px;
+      text-align: center;
+      padding: 16px;
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .map-buttons .btn:hover { text-decoration: none; }
 
     .social-links {
       margin-top: 32px;
@@ -264,10 +280,12 @@
               <div class="info-icon">📍</div>
               <div class="info-content">
                 <h3>Localização</h3>
-                <p><strong>Sede:</strong> Av. José Mahfuz, 231 - Cibratel I, Itanhaém - SP<br>
-                <a href="https://www.google.com/maps/place/Av.+Jos%C3%A9+Mahfuz,+231+-+Cibratel+I,+Itanha%C3%A9m+-+SP,+11740-000/@-24.2020586,-46.8237513,629m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94d1d54b1353f965:0xa716c23b8a220626!8m2!3d-24.2020586!4d-46.8237513!16s%2Fg%2F11f1wlp71v?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Ver no mapa</a></p>
-                <p style="margin-top: 12px;"><strong>Casinha da Praia:</strong> 554 Av. Dr. Edson Batista de Andrade, também em Itanhaém/SP, pois é perto da sede e também no Cibratel 1<br>
-                <a href="https://www.google.com/maps/@-24.2000115,-46.8152831,3a,75y,175.75h,78.38t/data=!3m7!1e1!3m5!1sNW4DagN-DsW1hMjVhSAo3A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D11.620000000000005%26panoid%3DNW4DagN-DsW1hMjVhSAo3A%26yaw%3D175.75!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Ver no mapa</a></p>
+                <p><strong>Sede:</strong> Av. José Mahfuz, 231 - Cibratel I, Itanhaém - SP</p>
+                <p style="margin-top: 12px;"><strong>Casinha da Praia:</strong> Av. Dr. Edson Batista de Andrade, 554 - Cibratel I, Itanhaém - SP</p>
+                <div class="map-buttons">
+                  <a href="https://www.google.com/maps/place/Av.+Jos%C3%A9+Mahfuz,+231+-+Cibratel+I,+Itanha%C3%A9m+-+SP,+11740-000/@-24.2020586,-46.8237513,629m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94d1d54b1353f965:0xa716c23b8a220626!8m2!3d-24.2020586!4d-46.8237513!16s%2Fg%2F11f1wlp71v?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Sede</a>
+                  <a href="https://www.google.com/maps/@-24.2000115,-46.8152831,3a,75y,175.75h,78.38t/data=!3m7!1e1!3m5!1sNW4DagN-DsW1hMjVhSAo3A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D11.620000000000005%26panoid%3DNW4DagN-DsW1hMjVhSAo3A%26yaw%3D175.75!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Casinha</a>
+                </div>
               </div>
             </div>
 
@@ -328,5 +346,4 @@
     });
   </script>
 </body>
-</html></content>
-<parameter name="filePath">/home/anon5698/Downloads/soul-surf-main/site/contato.html
+</html>
